@@ -1,9 +1,12 @@
 ---
-theme: default
+theme: seriph
 layout: cover
 background: ./projectimg.jpg
 class: 'text-center'
-css: 'styles.css'
+css: 'slides.css'
+fonts:
+  sans: 'Inter'
+  mono: 'Fira Code'
 ---
 
 <h1 class="mb-4">Welcome to Circle-17 JavaScript Presentation</h1>
@@ -32,7 +35,7 @@ css: 'styles.css'
   </div>
 </v-click>
 ---
-layout: 'default'
+layout: default
 ---
 
 <h3 class="mb-4">Circle Members</h3>
@@ -67,7 +70,10 @@ const members = [
   { name: 'Abiodun Elizabeth', initials: 'AE' },
   { name: 'Toluwalade Jesudarasimi', initials: 'TJ' },
   { name: 'Taiwo Saidat', initials: 'TS' },
-  { name: 'Obasi Obinna', initials: 'OO' }
+  { name: 'Obasi Obinna', initials: 'OO' },
+  { name: 'Amamchukwu Kosiso', initials: 'AK' },
+  { name: 'Ndubueze Kenneth', initials: 'NK' },
+  { name: 'Oladosu Hassan', initials: 'OH' }
 ]
 </script>
 
@@ -78,7 +84,7 @@ const members = [
 }
 </style>
 ---
-layout: 'default'
+layout: default
 ---
 
 <div class="card">
@@ -103,7 +109,7 @@ layout: 'default'
   </div>
 </v-click>
 ---
-layout: 'default'
+layout: default
 ---
 
 <h3 class="mb-4">Functions</h3>
@@ -145,7 +151,7 @@ function greet(name) {
 
 // Arrow functions only - a very simple and concise syntax for creating functions.
 const greet = (name) => {
-    return 'Hello, $[name]';
+    return `Hello, $[name]`;
 };
 ```
 
@@ -157,7 +163,7 @@ const greet = (name) => {
   </div>
 </v-click>
 ---
-layout: 'default'
+layout: default
 ---
 
 <h4 class="text-xl text-blue-400 mb-4">Cont'd</h4>
@@ -171,7 +177,7 @@ function calculateTotal(cartItems) {
 const myCart = [      // Example Cart with 3 items & 3 differnt prices
   { name: "Book", price: 10 }, 
   { name: "Pen", price: 2 },
-  { name: "Notebook", price: 5 }
+  { name: "Notebook", price: 5 },
 ];
 
 const grandTotal = calculateTotal(myCart);   // Calculates items in the cart as they are scanned and shows total cost of items
@@ -356,7 +362,7 @@ layout: default
 ```js
 // 1. Rest Parameter - When collecting arguments
 function orderSandwich(bread, ...toppings) {
-  console.log(`Bread: ${bread}, Toppings: ${toppings.join(', ')}`);  // Items are collected into an array and then stored
+console.log(`Bread: ${bread}, Toppings: ${toppings.join(', ')}`);  // Items are collected into an array and then stored
 }
 orderSandwich('Wheat', 'Lettuce', 'Tomato', 'Mayo'); // Output: "Bread: Wheat, Toppings: Lettuce, Tomato, Mayo"
 ```
@@ -365,8 +371,8 @@ orderSandwich('Wheat', 'Lettuce', 'Tomato', 'Mayo'); // Output: "Bread: Wheat, T
 <v-click>
 ```js
 // When simulating unlimited numbers
-  function calculateTotal(...prices) {
-  return prices.reduce((total, p) => total + p, 0);
+function calculateTotal(...prices) {
+return prices.reduce((total, p) => total + p, 0);
 }
 console.log(calculateTotal(5, 10, 15)); // Output: 30
 ```
@@ -388,27 +394,27 @@ layout: default
 <v-click>
 ```js
 // Spread operators - When combining arrays
-  const teamA = ['John', 'Sarah'];
-  const teamB = ['Mike', ...teamA]; 
-  console.log(teamB); // ['Mike', 'John', 'Sarah'] Arrays have been combined
+const teamA = ['John', 'Sarah'];
+const teamB = ['Mike', ...teamA]; 
+console.log(teamB); // ['Mike', 'John', 'Sarah'] Arrays have been combined
 ```
 </v-click>
 
 <v-click>
 ```js
 // When cloning objects
-  const user = { name: 'Alice', age: 30 };
-  const userCopy = { ...user, age: 31 }; // Updates age
-  console.log(userCopy); // Output: { name: 'Alice', age: 31 } A new data cloned 
+const user = { name: 'Alice', age: 30 };
+const userCopy = { ...user, age: 31 }; // Updates age
+console.log(userCopy); // Output: { name: 'Alice', age: 31 } A new data cloned 
 ```
 </v-click>
 
 <v-click>
 ```js
 // When converting stings to arrays
-  const greeting = "Hello";
-  const chars = [...greeting]; 
-  console.log(chars); // Output: ['H', 'e', 'l', 'l', 'o'] Strings have been converted to arrays
+const greeting = "Hello";
+const chars = [...greeting]; 
+console.log(chars); // Output: ['H', 'e', 'l', 'l', 'o'] Strings have been converted to arrays
 ```
 </v-click>
 
@@ -450,8 +456,8 @@ layout: default
 <h4 class="text-xl text-blue-400 mb-4">Callback Functions</h4>
 
 <div class="card">
-<h4 class="text-xl text-blue-400 mb-4">A callback function is a function passed into another function as an argument which is then invoked inside the outer function to complete some kind of routine or action. It is mostly used in asynchronous operations eg JavaScript.
-</h4>
+  <h4 class="text-xl text-blue-400 mb-4">A callback function is a function passed into another function as an argument which is then invoked inside the outer function to complete some kind of routine or action. It is mostly used in asynchronous operations eg JavaScript.
+  </h4>
 </div>
 
 <v-click>
@@ -762,7 +768,7 @@ layout: default
 
 <div class="card">
   <h5 class="text-xl text-blue-400 mb-4">An API (Application Programming Interface) is a set of rules and protocols that allows one piece of software or system to communicate with another.</h5>
-  <h5 class="text-xl text-blue-400 mb-4">In simple terms: an API is like a Menu in a Resturant</h5>
+  <h5 class="text-xl text-blue-400 mb-4">In simple terms: an API is like a Menu in a Restaurant</h5>
     <ul class="space-y-3">
       <v-clicks>
         <li>The menu shows you what dishes (functions/data) you can order (use).</li>
@@ -947,7 +953,7 @@ background: ./projectimg.jpg
   </div>
 
   <div class="bg-gray-800/80 p-6 rounded-xl border border-blue-500/30">
-    <h3 class="text-blue-300 text-xl mb-4">Next Steps</h3>npm
+    <h3 class="text-blue-300 text-xl mb-4">Next Steps</h3>
     <ul class="text-left space-y-3 text-gray-200">
       <v-clicks>
         <li>Build Projects to Practice</li>

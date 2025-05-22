@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS | Assignment 5</title>
+        <style>
+            * {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                box-sizing: border-box;
+            }
+            body {
+                margin: 1%;
+                background: aliceblue;
+            }
+            .nav-container {
+                justify-content: end;
+                gap: 2rem;
+                
+            }
+            .nav-list {
+                list-style: none;
+                margin: 0;
+                justify-content: space-between;
+                gap: 70rem;
+                padding: 1rem;
+                box-shadow: #333;
+                display: inline-flex;
+            }
+            .nav-list a {
+                padding: 0.5rem;
+                border-radius: 15%;
+                text-decoration: none;
+                color: black;
+                transition: background-color 0.3s ease-in-out;
+            }
+            .nav-list a:hover {
+                color: blueviolet;
+                border: 1px solid black;
+            }
+            .nav-list a.active {
+                background-color: #333;
+                color: #fff;
+            }
+            .divider {
+                margin: 2%;
+            }
+            .content-box {
+                display: flex;
+                margin-left: 25%;
+                margin-right: 25%;
+                margin-top: 2%;
+            }
+            .info-container {
+                background: #fff;
+                padding: 10px 20px;
+                border-radius: 8px;
+                width: 100%;
+                max-width: 600px;
+                border: 1px solid;
+                border-color: aliceblue;
+                box-shadow: 0 0 4px
+            }
+            .form-group {
+                margin-bottom: 20px;
+                flex: 1;
+                margin-bottom: 10px;
+            }
+            .form-group label {
+                display: block;
+                font-size: 1.2em;
+                margin-bottom: 10px;
+                color: #333;
+            }
+            .form-group input, .form-group select {
+                width: 80%;
+                padding: 3%;
+                font-size: 1em;
+                border: 1px solid;
+                border-radius: 5px;
+                background: #ddd;
+            }
+            .form-group input:focus, .form-group input:hover {
+                border-color: burlywood;
+                outline: none;
+                background: yellowgreen;
+            }
+            .form-row {
+                display: flex;
+                gap: 20px;
+            }
+            button {
+                width: 100%;
+                padding: 1em;
+                background: green;
+                color: #fff;
+                font-size: 1.2em;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            button:hover {
+                background: sandybrown;
+            }
+            .content-info {
+                background-color: steelblue;
+                max-width: 300px;
+                margin: 0;
+                padding: 3cqb;
+                line-height: 1.7;
+                color: #fff;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-weight: 500;
+            }
+            .highlight {
+                font-size: xxx-large;
+                font-weight: 100;
+            }
+            .note-link a {
+                color: #fff;
+            }
+            footer {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="nav-bar" role="banner">
+            <div class="nav-container">
+                <nav>
+                    <ul class=>
+                        <img src="#" alt="Company Logo" height="50px" width="50px"><li class="nav-list"><a href="./index.html"><strong>WP Pusher</a><strong></a></li>
+                        <li class="nav-list"><a href="#">Download</a></li>
+                        <li class="nav-list"><a href="#">Learn more</a></li>
+                        <li class="nav-list"><a href="#">Pricing</a></li>
+                        <li class="nav-list"><a href="#">Help</a></li>
+                        <li class="nav-list"><a href="#">Account</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <hr class="divider">
+        <main>
+            <div class="content-box">
+                <div class="info-container">
+                    <h1 class="heading">Checkout</h1>
+                    <br>
+                    <hr class="divider">
+                    <ol>
+                        <h2><li>Your Basic Information</li></h2>
+                    </ol>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" placeholder="Doe">
+                        </div>
+                    </div>
+                    <div class="form-group full width">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="johndoe@example.com">
+                    </div>
+                    <hr class="divider">
+                    <ol>
+                        <h2><li>Your Payment Information</li></h2>
+                    </ol>
+                    <div class="form-group full width">
+                        <label for="cardNumber">Credit Card</label>
+                        <input type="tel" id="cardnumber" name="cardNumber" inputmode="numeric" maxlength="16" placeholder="Card Numbr MM/YY CVC">
+                    </div>
+                    <hr class="divider">
+                    <div class="submit-button">
+                        <button type="submit">Buy WP Pusher</button>
+                    </div>
+                    <h4>&quest; Need any Help?</h4>
+                    <p>Do not hesitate to <a href="#"> contact support!</a></p>
+                </div>
+                <div class="content-info">
+                    <div class="price-info">
+                        <h2>Freelancer</h2>
+                        <h2>$ <span class="highlight">99</span> /year</h2>
+                        <p>Automatically renews after 1 year</p>
+                    </div>
+                    <div>
+                        <ul class="note-list">
+                            <li>Use on 5 client sites</li>
+                            <li>Private repositories</li>
+                            <li>Email Support</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <P>Need 20 client sites?</P>
+                        <p class="note-link"><a href="#">Switch to the Agency plan</a></p>
+                    </div>
+                    <hr class="divider">
+                    <div class="message">
+                        <p>FTP is horrible to deal with. <strong><em>WP Pusher</em></strong> solves that issue and the customer support is awesome!</p>
+                    </div>
+                    <div>
+                        <img src="#" alt="image of kirk beard" height="50px" width="50px"><h4>Kirk Beard</h4>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <br>
+        <footer>&copy; 2018 WP Pusher IVS | <a href="#">Terms of Service</a></footer>
+    </body>

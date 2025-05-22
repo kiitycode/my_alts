@@ -1,4 +1,4 @@
-
+/* Body styles */
 * {
   margin: 0;
   padding: 0;
@@ -11,12 +11,14 @@
 
 body {
   background-color: rgba(252, 245, 229, 1);
+  font-family: var(--common-font);
 }
 
+/* Header Styles */
 .header {
   margin-bottom: 34px;
   background-color: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px;
+  border-bottom: 1px solid #ddd;
 }
 
 .header img {
@@ -54,6 +56,7 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .profile-info {
@@ -66,7 +69,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  font-family: var(--common-font);
 }
 
 .profile-name h2 {
@@ -98,10 +100,10 @@ body {
   gap: 8px;
   opacity: 70%;
   text-decoration: none;
+  align-items: center;
 }
 
 .edit-link span {
-  font-family: var(--common-font);
   font-weight: 500;
   font-size: 16px;
   line-height: 100%;
@@ -109,7 +111,6 @@ body {
 }
 
 .edit-link:hover {
-  color: #000;
   opacity: 100%;
   transition: ease-in-out 0.2s;
 }
@@ -147,101 +148,178 @@ body {
   height: 12px;
 }
 
-
-/* Main container */
+/* Main Styles */
 .posts-container {
   padding: 20px 0 40px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-  border-bottom: 1px solid rgba(33, 33, 33, 0.7);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
-.post-img {
+.post-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-card-img {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
   border-radius: 8px;
 }
 
 .post-img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.post-img:hover {
+  transform: scale(1.03);
 }
 
 .title-container {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-}
-
-.like-btn {
-  width: 23px;
-  height: 20px;
-  opacity: 40%;
-  align-self: center;
-  border: none;
-}
-
-.like-btn:hover {
-  opacity: 100%;
+  align-items: center;
 }
 
 .post-name {
-  font-family: var(--common-font);
   font-size: 20px;
   font-weight: 500;
-  line-height: 120%;
 }
 
-/* Footer styling */
+.like-btn {
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #666;
+}
+
+.like-btn:hover {
+  color: #333;
+}
+
+.fa-heart.liked {
+  color: red;
+}
+
+/* Footer Styles */
 footer {
-margin: 60px auto;
-color: #666;
-text-align: center;
-font-family: var(--common-font);
-font-weight: 400;
-font-size: 16px;
-line-height: 100%;
+  margin: 60px auto;
+  color: #666;
+  text-align: center;
+  font-size: 16px;
+  padding-bottom: 20px;
 }
 
-/* media queries for mobile responsiveness */
-
-@media screen and (max-width: 560px) {
-  .profile-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .profile-card {
-    flex-direction: column;
-    align-items: center;
+/* Responsive Design */
+@media (max-width: 768px) {
+.profile-container {
+  flex-direction: column;
+  gap: 20px;
   }
 
-  .profile-info {
-    align-items: center;
-    gap: 30px;
+.profile-card {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   }
 
-  .profile-name {
-    align-items: center;
-    text-align: center;
+.profile-info {
+  align-items: center;
+  gap: 20px;
   }
 
-  .profile-name h2 {
-    font-size: 20px;
+.posts-container {
+  grid-template-columns: 1fr;
   }
 
-  .new-post-button {
-    width: 100%;
+
+.modal-content {
+  margin: 20% auto;
+  width: 95%;
   }
 }
 
-@media screen and (max-width: 414px) {
-  .posts-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .post-name {
-    font-size: 16px;
-  }
+/* Modal Styles (Edit profile & New Post */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background-color: #fcf5e5;
+  margin: 10% auto;
+  padding: 25px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #333;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  color: #212121;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.modal button[type="submit"] {
+  padding: 12px;
+  background-color: #212121;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Preview Styles */
+.preview-content {
+  text-align: center;
+}
+
+.preview-content img {
+  max-width: 100%;
+  max-height: 60vh;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }

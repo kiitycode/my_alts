@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <title>SPOTS APP</title>
+
+</head>
+<body>
+    <div class="header">
+        <img src="./circle17icons/logo/Logo.svg" alt="Spots Logo">
+    </div>
+
+    <main class="container">
+        <div class="profile-container">
+            <div class="profile-card">
+                <div class="profile-img">
+                    <img src="./circle17icons/image icon(header)/image.png" alt="Profile Image">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-name">
+                        <h2 class="multiline-ellipsis">Bessie Coleman</h2>
+                        <p class="multiline-ellipsis">Civil Aviator</p>
+                    </div>
+                    <a class="edit-link" href="#" id="editProfileBtn">
+                        <img src="./circle17icons/edit icon/edit icon.png" alt="Edit Icon">
+                        <span>Edit Profile</span>
+                    </a>
+                </div>
+            </div>
+            <button class="new-post-button" id="newPostBtn">
+                <img src="./circle17icons/plus icon/plus sign.png" alt="Plus Icon">
+                <span>New Post</span>
+            </button>
+        </div>
+        <div class="posts-container" id="postsContainer">
+            <!-- Posts will be inserted here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="profileForm">
+                <input type="text" id="name" placeholder="Name" value="Bessie Coleman">
+                <input type="text" id="title" placeholder="Title" value="Civil Aviator">
+                <input type="file" id="profileImage" accept="image/*">
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Image Preview Modal -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content preview-content">
+            <span class="close">&times;</span>
+            <img id="previewImage" src="" alt="Preview">
+            <h3 id="previewTitle"></h3>
+        </div>
+    </div>
+
+    <!-- New Post Modal -->
+    <div id="newPostModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create New Post</h2>
+            <form id="newPostForm">
+                <input type="file" id="postImage" accept="image/*" required>
+                <input type="text" id="postTitle" placeholder="Title" required>
+                <button type="submit">Create Post</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <p>2025 &copy; Spots App. #Tinyuka, AltSchool</p>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>

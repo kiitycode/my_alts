@@ -1,120 +1,122 @@
-
+/* Body Styling */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-:root {
-  --common-font: "Poppins", sans-serif;
-}
+        :root {
+            --common-font: "Poppins", sans-serif;
+        }
 
-body {
-  background-color: rgba(252, 245, 229, 1);
-}
+        body {
+            background-color: rgba(252, 245, 229, 1);
+            font-family: var(--common-font);
+        }
 
-.header {
-  margin-bottom: 34px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px;
-}
+        /* Header Styling */
+        .header {
+            margin-bottom: 34px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid #ddd;
+        }
 
-.header img {
-  display: block;
-  margin: auto;
-  padding: 10px 80px;
-}
+        .header img {
+            display: block;
+            margin: auto;
+            padding: 10px 80px;
+        }
 
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
+    /* Profile Container styling */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
 
-.profile-container {
-  padding-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(33, 33, 33, 0.7);
-}
+        .profile-container {
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(33, 33, 33, 0.7);
+        }
 
-.profile-card {
-  display: flex;
-  gap: 20px;
-}
+        .profile-card {
+            display: flex;
+            gap: 20px;
+        }
 
-.profile-img {
-  max-width: 190px;
-  max-height: 190px;
-  min-width: 80px;
-  min-height: 80px;
-}
+        .profile-img {
+            max-width: 190px;
+            max-height: 190px;
+            min-width: 80px;
+            min-height: 80px;
+        }
 
-.profile-img img {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-}
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+        }
 
-.profile-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-.profile-name {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  font-family: var(--common-font);
-}
+        .profile-name {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-.profile-name h2 {
-  max-width: 350px;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 100%;
-  color: rgba(33, 33, 33, 1);
-}
+        .profile-name h2 {
+            max-width: 350px;
+            font-weight: 500;
+            font-size: 32px;
+            line-height: 100%;
+            color: rgba(33, 33, 33, 1);
+        }
 
-.profile-name p {
-  max-width: 350px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 100%;
-  color: rgba(33, 33, 33, 0.7);
-}
+        .profile-name p {
+            max-width: 350px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 100%;
+            color: rgba(33, 33, 33, 0.7);
+        }
 
-.multiline-ellipsis {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+        .multiline-ellipsis {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-.edit-link {
-  display: flex;
-  gap: 8px;
-  opacity: 70%;
-  text-decoration: none;
-}
+        .edit-link {
+            display: flex;
+            gap: 8px;
+            opacity: 70%;
+            text-decoration: none;
+            align-items: center;
+        }
 
-.edit-link span {
-  font-family: var(--common-font);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 100%;
-  color: rgba(33, 33, 33, 1);
-}
+        .edit-link span {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 100%;
+            color: rgba(33, 33, 33, 1);
+        }
 
-.edit-link:hover {
-  color: #000;
-  opacity: 100%;
-  transition: ease-in-out 0.2s;
-}
+        .edit-link:hover {
+            opacity: 100%;
+            transition: ease-in-out 0.2s;
+        }
 
-.new-post-button {
+        .new-post-button {
   padding: 18px 24px 18px 32px;
   align-self: flex-end;
   display: flex;
@@ -147,101 +149,173 @@ body {
   height: 12px;
 }
 
+/* Post Container Styling */
+        .posts-container {
+            padding: 20px 0 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
 
-/* Main container */
-.posts-container {
-  padding: 20px 0 40px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-  border-bottom: 1px solid rgba(33, 33, 33, 0.7);
-  gap: 20px;
-}
+        .post-card {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-.post-img {
-  border-radius: 8px;
-}
+        .post-card-img {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
 
-.post-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-}
+        .post-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
 
-.title-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-}
+        .post-img:hover {
+            transform: scale(1.03);
+        }
 
-.like-btn {
-  width: 23px;
-  height: 20px;
-  opacity: 40%;
-  align-self: center;
-  border: none;
-}
+        .title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.like-btn:hover {
-  opacity: 100%;
-}
+        .post-name {
+            font-size: 20px;
+            font-weight: 500;
+        }
 
-.post-name {
-  font-family: var(--common-font);
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 120%;
-}
+        .like-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: #666;
+        }
 
-/* Footer styling */
-footer {
-margin: 60px auto;
-color: #666;
-text-align: center;
-font-family: var(--common-font);
-font-weight: 400;
-font-size: 16px;
-line-height: 100%;
-}
+        .like-btn:hover {
+            color: #333;
+        }
 
-/* media queries for mobile responsiveness */
+        .fa-heart.liked {
+            color: red;
+        }
 
-@media screen and (max-width: 560px) {
-  .profile-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .profile-card {
-    flex-direction: column;
-    align-items: center;
-  }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
 
-  .profile-info {
-    align-items: center;
-    gap: 30px;
-  }
+        .modal-content {
+            background-color: #fcf5e5;
+            margin: 10% auto;
+            padding: 25px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
 
-  .profile-name {
-    align-items: center;
-    text-align: center;
-  }
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+        }
 
-  .profile-name h2 {
-    font-size: 20px;
-  }
+        .close:hover {
+            color: #333;
+        }
 
-  .new-post-button {
-    width: 100%;
-  }
-}
+        .modal h2 {
+            margin-bottom: 20px;
+            color: #212121;
+        }
 
-@media screen and (max-width: 414px) {
-  .posts-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .post-name {
-    font-size: 16px;
-  }
-}
+        .modal form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .modal button[type="submit"] {
+            padding: 12px;
+            background-color: #212121;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .preview-content {
+            text-align: center;
+        }
+
+        .preview-content img {
+            max-width: 100%;
+            max-height: 60vh;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            margin: 60px auto;
+            color: #666;
+            text-align: center;
+            font-size: 16px;
+            padding-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .profile-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .profile-info {
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .posts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 20% auto;
+                width: 95%;
+            }
+        }

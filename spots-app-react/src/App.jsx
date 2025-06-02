@@ -24,27 +24,27 @@ function App() {
       liked: false,
     },
     {
-      image: '/public/CIRCLE 17 PICTURES/PICTURES/restaurant-terrace.png',
+      image: '../public/CIRCLE 17 PICTURES/PICTURES/restaurant-terrace.png',
       title: 'Restaurant Terrace',
       liked: false,
     },
     {
-      image: '/public/CIRCLE 17 PICTURES/PICTURES/outdoor-cafe.png',
+      image: '../public/CIRCLE 17 PICTURES/PICTURES/outdoor-cafe.png',
       title: 'An outdoor cafe',
       liked: false,
     },
         {
-      image: '/public/CIRCLE 17 PICTURES/PICTURES/long-bridge.png',
+      image: '../public/CIRCLE 17 PICTURES/PICTURES/long-bridge.png',
       title: 'A very long bridge',
       liked: false,
     },
         {
-      image: '/public/CIRCLE 17 PICTURES/PICTURES/mountain-house.png',
+      image: '../public/CIRCLE 17 PICTURES/PICTURES/mountain-house.png',
       title: 'Mountain House',
       liked: false,
     },
         {
-      image: '/public/CIRCLE 17 PICTURES/PICTURES/tunnel-with-light.png',
+      image: '../public/CIRCLE 17 PICTURES/PICTURES/tunnel-with-light.png',
       title: 'Tunnel with morning light',
       liked: false,
     },

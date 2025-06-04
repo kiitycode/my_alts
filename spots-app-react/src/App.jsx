@@ -19,32 +19,32 @@ function App() {
   // Post State
   const [posts, setPosts] = useState([
     {
-      image: '../public/imgs/PICTURES/val-thorens.png',
+      image: '/imgs/PICTURES/val-thorens.png',
       title: 'Val Thorens',
       liked: false,
     },
     {
-      image: '../public/imgs/PICTURES/restaurant-terrace.png',
+      image: '/imgs/PICTURES/restaurant-terrace.png',
       title: 'Restaurant Terrace',
       liked: false,
     },
     {
-      image: '../public/imgs/PICTURES/outdoor-cafe.png',
+      image: 'imgs/PICTURES/outdoor-cafe.png',
       title: 'An outdoor cafe',
       liked: false,
     },
         {
-      image: '../public/imgs/PICTURES/long-bridge.png',
+      image: '/imgs/PICTURES/long-bridge.png',
       title: 'A very long bridge',
       liked: false,
     },
         {
-      image: '../public/imgs/PICTURES/mountain-house.png',
+      image: '/imgs/PICTURES/mountain-house.png',
       title: 'Mountain House',
       liked: false,
     },
         {
-      image: '../public/imgs/PICTURES/tunnel-with-light.png',
+      image: '/imgs/PICTURES/tunnel-with-light.png',
       title: 'Tunnel with morning light',
       liked: false,
     },

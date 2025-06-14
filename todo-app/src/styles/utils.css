@@ -1,0 +1,117 @@
+:root {
+  --background: #0f1117;
+  --card-bg: #1a1d25;
+  --text-color: #f5f7fa;
+  --accent: #ffcc00;      /* Vibrant gold */
+  --gold: #ffc107;        /* Gold */
+  --danger: #ff4c4c;      /* Red */
+  --btn-bg: #ffcc00;
+  --btn-hover: #e6b800; /* Darker gold for hover */
+  --btn-text: #0f1117;    /* Dark text for button */
+  --border: #333;
+  --link: #61dafb;
+}
+
+/* Global */
+body {
+  background: var(--background);
+  color: var(--text-color);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: 0;
+  padding: 50px;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Section titles */
+h1, h2 {
+  color: var(--accent);
+}
+
+/* Form Inputs */
+input, select {
+  background: #22252e;
+  color: #fff;
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: 6px;
+  width: 100%;
+  transition: border-color 0.3s;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Error Message */
+.text-danger {
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-size: 1rem;
+}
+.btn:hover {
+  background: var(--btn-hover);
+}
+.btn:disabled {
+  opacity: 0.6;
+}
+
+/* Layout Utilities */
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mb-1 { margin-bottom: 8px; }
+
+/* Pagination */
+.pagination-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* Forms */
+form {
+  max-width: 600px;
+}
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: var(--accent);
+}

@@ -36,6 +36,7 @@ export default function CreateTask() {
             id="name"
             {...register("name", { required: "Task name is required" })}
             placeholder="e.g. Buy groceries"
+            className='form-control'
           />
           {errors.name && <p className="text-danger">{errors.name.message}</p>}
         </div>
@@ -46,6 +47,7 @@ export default function CreateTask() {
             id="description"
             {...register("description")}
             placeholder="Optional details..."
+            className="form-control"
           />
         </div>
 
@@ -58,15 +60,16 @@ export default function CreateTask() {
             <option value="DONE">✅ Done</option>
             <option value="CANCELLED">❌ Cancelled</option>
           </select>
+          
         </div>
 
         <div className="mb-1">
           <label>Priority</label><br />
           <select {...register("priority", { required: "Priority is required" })}>
             <option value="">-- Select --</option>
-            <option value="LOW">🟢 Low</option>
-            <option value="MEDIUM">🟠 Medium</option>
-            <option value="HIGH">🔴 High</option>
+            <option value="LOW">Low</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="HIGH">High</option>
           </select>
         </div>
 

@@ -50,6 +50,7 @@ export default function EditTask() {
           <input
             id="name"
             {...register("name", { required: "Task name is required" })}
+            className='form-control'
           />
           {errors.name && <p className="text-danger">{errors.name.message}</p>}
         </div>
@@ -59,6 +60,7 @@ export default function EditTask() {
           <textarea
             id="description"
             {...register("description")}
+            className="form-control"
           />
         </div>
 

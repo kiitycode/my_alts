@@ -11,6 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
+css-assignment/
+html-assignment/
+slidev-presentation/
+spots-app/
+spots-app-react/
 
 # Editor directories and files
 .vscode/*

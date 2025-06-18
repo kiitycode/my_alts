@@ -1,27 +1,41 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { createTask } from '../services/api';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, Navigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function CreateTask() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
+    reset
   } = useForm();
+
+  if (!user) return <Navigate to="/login" replace />;
 
   const onSubmit = async (data) => {
     try {
-      await createTask({
+      const createdTask = await createTask({
         name: data.name,
         status: data.status,
         priority: data.priority,
         description: data.description || '',
+      }, user.id);
+
+      console.log('Task created:', createdTask);
+      reset();
+      navigate('/', {
+        state: {
+          refresh: true,
+          highlightTask: createdTask.id
+        }
       });
-      navigate('/');
     } catch (err) {
-      alert("Failed to create task");
+      alert(`Failed to create task: ${err.message}`);
+      console.error('Creation error:', err);
     }
   };
 
@@ -60,7 +74,7 @@ export default function CreateTask() {
             <option value="DONE">✅ Done</option>
             <option value="CANCELLED">❌ Cancelled</option>
           </select>
-          
+          {errors.status && <p className="text-danger">{errors.status.message}</p>}
         </div>
 
         <div className="mb-1">
@@ -71,6 +85,7 @@ export default function CreateTask() {
             <option value="MEDIUM">Medium</option>
             <option value="HIGH">High</option>
           </select>
+          {errors.priority && <p className="text-danger">{errors.priority.message}</p>}
         </div>
 
         <div className="flex-between mt-2">

@@ -228,7 +228,7 @@ header {
    ============================= */
 
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/aysrael_dupe1/imgs/bgs/bg_main/Backup_back.png') center center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/imgs/bgs/bg_main/Backup_back.png') center center/cover no-repeat;
     color: #fff;
     height: 95vh;
     display: flex;
@@ -286,7 +286,7 @@ header {
    ============================= */
 
 .about-section {
-  background: url('/aysrael_dupe1/imgs/bgs/bg_main/Background_01D.jpg') no-repeat center center/cover;
+  background: url('/imgs/bgs/bg_main/Background_01D.jpg') no-repeat center center/cover;
   padding: 60px 20px;
   position: relative;
   color: goldenrod;
@@ -403,7 +403,7 @@ header {
    ============================= */
 
 .audio-demos {
-    background: url('/aysrael_dupe1/imgs/bgs/bg_main/Background_02c.jpg') no-repeat center center/cover;
+    background: url('/imgs/bgs/bg_main/Background_02c.jpg') no-repeat center center/cover;
     padding: 80px 20px;
     text-align: center;
     position: relative;
@@ -683,7 +683,7 @@ header {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('/aysrael_dupe1/imgs/bgs/bg_gene/') center/cover no-repeat;
+  background: url('/imgs/bgs/bg_gene/bg_card_gen.jpg') center/cover no-repeat;
   opacity: 0.1;
   z-index: 0;
 }
@@ -738,12 +738,12 @@ header {
   z-index: -1;
 }
 
-.card-1::before { background-image: url('/aysrael_dupe1/imgs/bgs/bg_gene/bg_card01.jpg'); }
-.card-2::before { background-image: url('/aysrael_dupe1/imgs/bgs/bg_gene/bg_card02.jpg'); }
-.card-3::before { background-image: url('/aysrael_dupe1/imgs/bgs/bg_gene/bg_card03.jpg'); }
-.card-4::before { background-image: url('/aysrael_dupe1/imgs/bgs/bg_gene/bg_card04.jpg'); }
-.card-5::before { background-image: url('/aysrael_dupe1/imgs/bgs/bg_gene/bg_card05.jpg'); }
-.card-6::before { background-image: url('/aysrael_dupe1/imgs/bgs/bg_gene/bg_card06.jpg'); }
+.card-1::before { background-image: url('/imgs/bgs/bg_gene/bg_card01.jpg'); }
+.card-2::before { background-image: url('/imgs/bgs/bg_gene/bg_card02.jpg'); }
+.card-3::before { background-image: url('/imgs/bgs/bg_gene/bg_card03.jpg'); }
+.card-4::before { background-image: url('/imgs/bgs/bg_gene/bg_card04.jpg'); }
+.card-5::before { background-image: url('/imgs/bgs/bg_gene/bg_card05.jpg'); }
+.card-6::before { background-image: url('/imgs/bgs/bg_gene/bg_card06.jpg'); }
 
 .service-card:hover {
   transform: translateY(-10px) scale(1.02);

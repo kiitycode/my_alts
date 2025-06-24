@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS | Assignment 3</title>
+        <style>
+            /* * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+
+            body {
+                min-height: 100vh;
+                
+                justify-content: center;
+                align-items: center;
+                background-color: rgb(145, 115, 172);
+            }
+
+            .main-content {
+                display: flex;
+                flex-direction: column;
+                background: white;
+                padding: 3rem;
+                border-radius: 12px;
+                box-shadow: 0 8px 12px rgba(0,0,0,0.5);
+                max-width: 600px;
+                line-height: ;  */
+
+            
+            body {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                background-color: #eee;
+                min-height: 100vh;
+            }
+            .nav-container {
+                box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+                background-color: teal;
+                text-align: center;
+            }
+            .nav-list {
+                list-style: none;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0.3rem;
+                box-shadow: #333;
+            }
+            .nav-list a {
+                padding: 0.5rem;
+                border: 1px solid black;
+                border-radius: 15%;
+                background-color: gainsboro;
+                text-decoration: none;
+                color: black;
+                transition: background-color 0.3s ease-in-out;
+            }
+            .nav-list a:hover {
+                background-color: #333;
+                color: #fff;
+            }
+            .nav-list a.active {
+                background-color: #aaa;
+                color: #fff;
+            }
+            .main-content {
+                padding: 3rem;
+                margin: 2%;
+                background-color: rgb(149, 126, 170);
+                box-shadow: 0, 0, 0, 0.1;
+                max-height: 100vh;
+            }
+            .img-container {
+                position: relative;
+                max-width: 300px;
+                border: 1px solid;
+            }
+            .img-container img {
+                width: 100%;
+                height: 250px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px;
+                justify-content: center;
+
+            }
+            .new-info {
+                max-width: 150px;
+                border: 1px solid;
+                background-color: khaki;
+                border-radius: 0 1em 1em 0;
+            }
+            .message {
+                background-color: #eee;
+                padding: 3rem;
+                border-radius: 12px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+                max-width: 600px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="nav-container">
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-list"><a href="./index.html">HOME</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main-content">
+            <div class="message">
+                <div class="new-info">
+                    <h4>New and Improved!</h4>
+                </div>
+                <div class="img-container">
+                    <img src="./novus.jpg" alt="picture of Novus watch" height="150px" width="200px">
+                </div>
+                <h2>Novus Watch <span class="highlight">Series IV</span></h2>
+                <p>The pinnacle of fashion and tech. This wearable piece is an homage to gilded palaces and minimal regalia, combining nouveau-deco and brutalism influences ina compact, Swiss-made watch.</p>
+            </div>
+        </div>
+    </body>

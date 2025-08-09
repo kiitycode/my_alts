@@ -8,16 +8,27 @@ import EditProfileModal from './modals/EditProfileModal';
 import NewPostModal from './modals/NewPostModal';
 import PreviewModal from './modals/PreviewModal';
 
+// Types
+type Profile = {
+  name: string;
+  title: string;
+  image: string;
+};
+
+type Post = {
+  image: string;
+  title: string;
+  liked: boolean;
+};
+
 function App() {
-  // Profile State
-  const [profile, setProfile] = useState({
+  const [profile, setProfile] = useState<Profile>({
     name: 'Bessie Coleman',
     title: 'Civil Aviator',
     image: '/circle17icons/image icon(header)/image.png',
   });
 
-  // Post State
-  const [posts, setPosts] = useState([
+  const [posts, setPosts] = useState<Post[]>([
     {
       image: '/imgs/PICTURES/val-thorens.png',
       title: 'Val Thorens',
@@ -33,24 +44,24 @@ function App() {
       title: 'An outdoor cafe',
       liked: false,
     },
-        {
+    {
       image: '/imgs/PICTURES/long-bridge.png',
       title: 'A very long bridge',
       liked: false,
     },
-        {
+    {
       image: '/imgs/PICTURES/mountain-house.png',
       title: 'Mountain House',
       liked: false,
     },
-        {
+    {
       image: '/imgs/PICTURES/tunnel-with-light.png',
       title: 'Tunnel with morning light',
       liked: false,
     },
   ]);
 
-  const [selectedPost, setSelectedPost] = useState(null);
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showNewPostModal, setShowNewPostModal] = useState(false);
 
@@ -68,7 +79,7 @@ function App() {
         <PostsContainer
           posts={posts}
           setPosts={setPosts}
-          onPreview={(post) => setSelectedPost(post)}
+          onPreview={(post: Post) => setSelectedPost(post)}
         />
       </main>
 
@@ -86,7 +97,7 @@ function App() {
       {showNewPostModal && (
         <NewPostModal
           onClose={() => setShowNewPostModal(false)}
-          onAdd={(newPost) => setPosts([newPost, ...posts])}
+          onAdd={(newPost: Post) => setPosts([newPost, ...posts])}
         />
       )}
 

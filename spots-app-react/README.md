@@ -1,57 +1,12 @@
-# SpotsApp (React + TypeScript)
+# React + Vite
 
-SpotsApp is a frontend web application built with **React** and **TypeScript**. The project is focused on demonstrating clean architecture, responsive UI, and modern development best practices using React with TypeScript.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 🚀 Tech Stack
+Currently, two official plugins are available:
 
-- React
-- TypeScript
-- Vite
-- Vanilla CSS
-- React Router
-- ESLint + Prettier
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 📦 Project Structure
+## Expanding the ESLint configuration
 
-spots-app-react/
-├── public/
-├── src/
-| |-- assets/
-│ ├── components/
-│ ├── modals/
-│ ├── styles/
-│ ├── App.tsx
-│ └── main.tsx
-|-- index.html
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-└── README.md
-
-
-## 🧪 Features
-
-- Clean and scalable file structure
-- Type-safe components and props
-- Easy-to-maintain project layout
-- Ready for future enhancements like state management, API integration, or testing
-
-## 🛠 How to Run the Project
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-```
-
-## Author
-
-- Bolumole Oluwatosin
-- School: School of Engineering / Front-End Engineering
-- Student ID: ALT/SOC/024/2933
-- Group: Circle 17
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

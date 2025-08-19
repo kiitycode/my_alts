@@ -1,69 +1,74 @@
-# React + TypeScript + Vite
+# E-Commerce Product Page (React + Tailwind CSS)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully responsive eCommerce product page built with React, Context API, and Tailwind CSS.
+It features a clean UI, dynamic cart management, and an interactive product gallery with a lightbox preview.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Navigation
 
-## Expanding the ESLint configuration
+- Responsive navbar:
+- Desktop: horizontal links with orange underline hover effect.
+- Mobile: collapsible sidebar menu with close button.
+- Hover states and active link styles for better UX.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Product Card
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Product details: title, brand, description, pricing with discount.
+- Quantity selector: increment/decrement buttons with spacing.
+- Add to Cart button:
+- Disabled when quantity is 0.
+- Adds product to global cart state.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Cart
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Cart dropdown (desktop & mobile friendly):
+- Shows "Your cart is empty" when no items are added.
+- Displays product thumbnail, unit price × quantity, and total cost.
+- Remove button with red hover effect and click animation.
+- Checkout button included.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Product Gallery
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Thumbnails that sync with main preview image.
+- Lightbox preview:
+- Opens on click.
+- Includes previous/next navigation buttons.
+- Supports Escape to close, and arrow keys for navigation.
+- Responsive for both mobile and desktop.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Styling & Interactions
+
+- Built with Tailwind CSS utility classes.
+- Smooth hover transitions on buttons and links.
+- Fully responsive design (mobile-first).
+
+## Tech Stack
+
+- React (with hooks & context API)
+- TypeScript
+- Tailwind CSS
+- Vite setup
+
+## Getting Started
+
+- Clone the repository
+git clone https://github.com/kiitycode/my_alts/tree/main/ecommerce_app
+cd ecommerce-app
+
+- Install dependencies
+npm install
+
+- Run the development server
+npm run dev
+
+- Build for production
+npm run build
+
+## Author
+
+Name: Bolumole Oluwatosin
+Institution: Altschool Africa
+School: School of Engineering / Front-End Engineering
+ID: ALT/SOE/024/2933
+Group: Circle 17

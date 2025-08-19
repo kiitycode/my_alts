@@ -52,23 +52,23 @@ It features a clean UI, dynamic cart management, and an interactive product gall
 
 ## Getting Started
 
-- Clone the repository
-git clone https://github.com/kiitycode/my_alts/tree/main/ecommerce_app
+- Clone the repository:
+git clone https://github.com/kiitycode/my_alts/tree/main/ecommerce_app,
 cd ecommerce-app
 
-- Install dependencies
+- Install dependencies:
 npm install
 
-- Run the development server
+- Run the development server:
 npm run dev
 
-- Build for production
+- Build for production:
 npm run build
 
 ## Author
 
-Name: Bolumole Oluwatosin
-Institution: Altschool Africa
-School: School of Engineering / Front-End Engineering
-ID: ALT/SOE/024/2933
-Group: Circle 17
+- Name: Bolumole Oluwatosin
+- Institution: Altschool Africa
+- School: School of Engineering / Front-End Engineering
+- ID: ALT/SOE/024/2933
+- Group: Circle 17

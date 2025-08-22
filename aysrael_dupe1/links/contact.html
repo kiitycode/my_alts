@@ -1,266 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYSRAEL Studios | Premium Music Production</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Oswald:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../links/styles.css">
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Contact | AYSRAEL Studios</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Oswald:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="../links/styles.css"/>
 
-<body>
-<!-- Navigation -->
-    <header>
-        <a href="../index.html" class="logo">
-            <img src="../imgs/logos/Logo_01A.jpg" alt="AYSRAEL Studios" height="50">
-            <span>AYSRAEL</span>
-        </a>
-        <nav class="nav-links">
-            <a href="../index.html" class="nav-link">Home</a>
-        </nav>
-        <button id="dashboardToggle">
-            <i class="fas fa-sliders-h"></i>
-        </button>
-    </header>
+        <style>
+            .whatsapp-float {
+                position: fixed; right: 20px; bottom: 20px; z-index: 2000;
+                display: inline-flex; align-items: center; justify-content: center;
+                width: 56px; height: 56px; border-radius: 50%;
+                background: #25D366; color: #fff;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+            }
+            .whatsapp-float i { font-size: 26px; line-height: 1; }
+            .whatsapp-float:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,0.25); }
+            @media (max-width: 768px) {
+                .whatsapp-float { right: 16px; bottom: 16px; width: 52px; height: 52px; }
+                .whatsapp-float i { font-size: 24px; }
+            }
+        </style>
+    </head>
 
-    <!-- Mobile Menu -->
-    <div id="dashboard">
-        <button id="closeBtn">&times;</button>
-        <div class="studio-brand">
-            <img src="../imgs/logos/Logo_01A.jpg" alt="AYSRAEL Studios" height="60">
-            <h2>AYSRAEL Studios</h2>
-        </div>
-        <nav class="dashboard-nav">
-            <a href="../index.html" class="nav-link"><i class="fas fa-house"></i> Home</a>
-        </nav>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
-        </div>
-    </div>
-    <div id="overlay"></div>
+    <body class="page-contact">
 
-   <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>CREATE YOUR LEGENDARY SOUND</h1>
-            <p>Professional recording, mixing, and mastering in Abuja's premier studio facility</p>
-            <a href="contact.html" class="cta-button">Book a Session</a>
-        </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
+<!-- Header / Navigation (shared) -->
+        <header>            
+            <a href="../index.html" class="logo">
+                <img src="../imgs/logos/Logo_01A.jpg" alt="AYSRAEL Studios" height="48" width="60"/>
+                <span class="logo-text">AYSRAEL Studios</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../links/contact.html#pricing" class="nav-link">our Services</a>
+                <a href="../index.html" class="nav-link">Home</a>
+            </nav>
+            <button id="dashboardToggle" aria-label="Open menu">
+                <i class="fa-solid fa-sliders"></i>
+            </button>
+        </header>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="contact-info">
-            <h2 class="section-title">CONTACT INFO</h2>
-            <p class="section-subtitle">Get in touch with us for bookings and inquiries</p>
-            <div class="info-grid">
-                <div class="info-card">
-                    <div class="card-icon">
-                        <i class="fas fa-phone"></i>
+<!-- Mobile Menu (shared) -->
+        <div id="dashboard" aria-hidden="true">
+            <button id="closeBtn" aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="logo">
+                <img src="../imgs/logos/Logo_01A.jpg" alt="AYSRAEL Studios" height="48" width="60"/>
+            </div>
+            <nav class="dashboard-nav">
+                <a href="#pricing" class="nav-link"><i class="fa-solid fa-user-tie"></i> Services</a>
+                <a href="../index.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
+            </nav>
+            <div class="social-links">
+                <a href="https://www.instagram.com/Aysraelstudio/#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://web.facebook.com/people/aysraelstudio/61574219829931/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com/@Aysraelstudiotv" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@Aysraelstudio" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div id="overlay"></div>
+
+        <!-- Hero (Short Banner Hero, content-only changes) -->
+        <section>
+            <div class="hero">
+                <h1>GET IN TOUCH WITH US TODAY</h1>
+                <p>We’d love to hear from you—whether it’s a new project, a collaboration, or just a quick question, our team is here to help.</p>
+                <a href="#contact" class="cta-button">Book a Session</a>
+            </div>
+        </section>
+
+        <!-- Contact Info -->
+        <section class="contact-section" id="contact">
+            <div class="contact-info">
+                <h2 class="section-title">OUR CONTACT INFO</h2>
+                <p class="section-subtitle">For bookings, sessions & questions, reach us directly via our phone numbers, WhatsApp or Email with just a click.</p>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="card-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <h3>Email (Bookings)</h3>
+                        <p>
+                            <a href="mailto:aysraelstudio@gmail.com?subject=Booking%20Request%20-%20AYSRAEL%20Studios&body=Hi%20AYSRAEL%20Studios%2C%0A%0AI%27d%20like%20to%20book%20a%20session.%20Here%20are%20my%20details%3A%0A%E2%80%A2%20Preferred%20Date%2FTime%3A%0A%E2%80%A2%20Service%20(Type)%3A%0A%E2%80%A2%20Phone%20Number%3A%0A%E2%80%A2%20Any%20Notes%3A%0A%0AThanks!">
+                            aysraelstudio@gmail.com
+                            </a>
+                        </p>
+                        <p>Tap to open your mail app with a prefilled booking template.</p>
                     </div>
-                    <h3>Phone</h3>
-                    <p><a href="tel:+2349036194499">+234 903 619 4499</a></p>
-                    <p><a href="tel:+2348104105763">+234 810 410 5763</a></p>
-                    <button class="whatsapp-btn" data-number="+2349036194499">
-                        <i class="fab fa-whatsapp"></i> WhatsApp Us
-                    </button>
-                </div>
-                <div class="info-card">
-                    <div class="card-icon">
-                        <i class="fas fa-envelope"></i>
+
+                    <div class="info-card">
+                        <div class="card-icon"><i class="fa-solid fa-phone"></i></div>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+2349036194499">+234 903 619 4499</a></p>
+                        <p><a href="tel:+2348104105763">+234 810 410 5763</a></p>
                     </div>
-                    <h3>Email</h3>
-                    <p><a href="mailto:aysraelstudio@gmail.com">aysraelstudio@gmail.com</a></p>
-                    <button class="email-btn" data-email="aysraelstudio@gmail.com">
-                        <i class="fas fa-paper-plane"></i> Send Email
-                    </button>
-                </div>
-                <div class="info-card">
-                    <div class="card-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Hours</h3>
-                    <div class="hours-list">
-                        <div class="hour-item">
-                            <span>Mon-Fri:</span>
-                            <span>10AM - 10PM</span>
-                        </div>
-                        <div class="hour-item">
-                            <span>Sat:</span>
-                            <span>12PM - 8PM</span>
-                        </div>
-                        <div class="hour-item">
-                            <span>Sun:</span>
-                            <span class="closed">Closed</span>
+
+                    <div class="info-card">
+                    <div class="card-icon"><i class="fa-solid fa-clock"></i></div>
+                        <h3>Hours</h3>
+                        <div class="hours-list">
+                            <div class="hour-item"><span>Mon–Fri:</span><span>10AM – 10PM</span></div>
+                            <div class="hour-item"><span>Sat:</span><span>12PM – 8PM</span></div>
+                            <div class="hour-item"><span>Sun:</span><span class="closed">Closed</span></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing-section">
-        <div class="container">
-            <h2 class="section-title">SERVICE PRICING</h2>
-            <div class="pricing-tables">
-                <div class="table-header">
-                    <div class="service-col">SERVICE</div>
-                    <div class="price-col">NORMAL PRICE</div>
-                    <div class="price-col promo">PROMO PRICE</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Multi tracking per tracks</div>
-                    <div class="price-col">₦200,000</div>
-                    <div class="price-col promo">₦160,000</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Artist with instruments</div>
-                    <div class="price-col">₦45,000</div>
-                    <div class="price-col promo">₦36,000</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Artist without instruments</div>
-                    <div class="price-col">₦70,000</div>
-                    <div class="price-col promo">₦56,000</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Beat making only</div>
-                    <div class="price-col">₦50,000</div>
-                    <div class="price-col promo">₦40,000</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Multi track mixing only</div>
-                    <div class="price-col">₦120,000</div>
-                    <div class="price-col promo">₦96,000</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Mastering only</div>
-                    <div class="price-col">₦30,000</div>
-                    <div class="price-col promo">₦25,000</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Live recording per hour with stereo mix bonus</div>
-                    <div class="price-col">₦60,000</div>
-                    <div class="price-col promo">₦48,000</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Live recording per hour</div>
-                    <div class="price-col">₦150,000</div>
-                    <div class="price-col promo">₦120,000</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Multi track with 2 hours post production</div>
-                    <div class="price-col">Contact Us</div>
-                    <div class="price-col promo">Contact Us</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Rehearsal without recording</div>
-                    <div class="price-col">₦20,000</div>
-                    <div class="price-col promo">₦16,000</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Rehearsal with stereo recording</div>
-                    <div class="price-col">₦25,000</div>
-                    <div class="price-col promo">₦20,000</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Night rehearsal without recording</div>
-                    <div class="price-col">₦20,000</div>
-                    <div class="price-col promo">-</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Night rehearsal with stereo recording</div>
-                    <div class="price-col">₦20,000</div>
-                    <div class="price-col promo">-</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Covers (per hour)</div>
-                    <div class="price-col">₦15,000</div>
-                    <div class="price-col promo">-</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Studio renting for meeting or service</div>
-                    <div class="price-col">₦20,000</div>
-                    <div class="price-col promo">-</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Studio camera usage</div>
-                    <div class="price-col">₦20,000</div>
-                    <div class="price-col promo">-</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">iPhone for roving</div>
-                    <div class="price-col">₦10,000</div>
-                    <div class="price-col promo">-</div>
-                </div>
-                <div class="table-row">
-                    <div class="service-col">Tracking and mixing</div>
-                    <div class="price-col">Negotiable</div>
-                    <div class="price-col promo">Negotiable</div>
+<!-- Pricing -->
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <h2 class="section-title">SERVICE PRICING</h2>
+                <div class="pricing-tables">
+                    <div class="table-header">
+                        <div class="service-col">SERVICE</div>
+                        <div class="price-col">NORMAL PRICE</div>
+                        <div class="price-col promo">PROMO PRICE</div>
+                    </div>
+
+                    <div class="table-row"><div class="service-col">Multi tracking per tracks</div><div class="price-col">₦200,000</div><div class="price-col promo">₦160,000</div></div>
+                    <div class="table-row"><div class="service-col">Artist with instruments</div><div class="price-col">₦45,000</div><div class="price-col promo">₦36,000</div></div>
+                    <div class="table-row"><div class="service-col">Artist without instruments</div><div class="price-col">₦70,000</div><div class="price-col promo">₦56,000</div></div>
+                    <div class="table-row"><div class="service-col">Beat making only</div><div class="price-col">₦50,000</div><div class="price-col promo">₦40,000</div></div>
+                    <div class="table-row"><div class="service-col">Multi track mixing only</div><div class="price-col">₦120,000</div><div class="price-col promo">₦96,000</div></div>
+                    <div class="table-row"><div class="service-col">Mastering only</div><div class="price-col">₦30,000</div><div class="price-col promo">₦25,000</div></div>
+                    <div class="table-row"><div class="service-col">Live recording per hour with stereo mix bonus</div><div class="price-col">₦60,000</div><div class="price-col promo">₦48,000</div></div>
+                    <div class="table-row"><div class="service-col">Live recording per hour</div><div class="price-col">₦150,000</div><div class="price-col promo">₦120,000</div></div>
+                    <div class="table-row"><div class="service-col">Multi track with 2 hours post production</div><div class="price-col">Contact Us</div><div class="price-col promo">Contact Us</div></div>
+                    <div class="table-row"><div class="service-col">Rehearsal without recording</div><div class="price-col">₦20,000</div><div class="price-col promo">₦16,000</div></div>
+                    <div class="table-row"><div class="service-col">Rehearsal with stereo recording</div><div class="price-col">₦25,000</div><div class="price-col promo">₦20,000</div></div>
+                    <div class="table-row"><div class="service-col">Night rehearsal without recording</div><div class="price-col">₦20,000</div><div class="price-col promo">-</div></div>
+                    <div class="table-row"><div class="service-col">Night rehearsal with stereo recording</div><div class="price-col">₦20,000</div><div class="price-col promo">-</div></div>
+                    <div class="table-row"><div class="service-col">Covers (per hour)</div><div class="price-col">₦15,000</div><div class="price-col promo">-</div></div>
+                    <div class="table-row"><div class="service-col">Studio renting for meeting or service</div><div class="price-col">₦20,000</div><div class="price-col promo">-</div></div>
+                    <div class="table-row"><div class="service-col">Studio camera usage</div><div class="price-col">₦20,000</div><div class="price-col promo">-</div></div>
+                    <div class="table-row"><div class="service-col">iPhone for roving</div><div class="price-col">₦10,000</div><div class="price-col promo">-</div></div>
+                    <div class="table-row"><div class="service-col">Tracking and mixing</div><div class="price-col">Negotiable</div><div class="price-col promo">Negotiable</div></div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="contact-form">
-        <h2 class="section-title">SEND US A MESSAGE</h2>
-        <!-- The JS will now render the form here -->
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
 
-
-    <!-- Map Section -->
-    <section class="map-section">
-        <div class="container">
-            <h2 class="section-title">FIND US</h2>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15758.309955454579!2d7.400985355419912!3d9.102197700000016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e75e58975d8f3%3A0xc46a7c37597905ce!2s2nd%20Avenue%20Cornershop%2C%20Gwarinpa!5e0!3m2!1sen!2sng!4v1749133497747!5m2!1sen!2sng"
-                width="100%" 
-                height="450" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
-        </div>
-    </section>
+<!-- Map -->
+        <section class="map-section">
+            <div class="container">
+                <h2 class="section-title">FIND US</h2>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15758.309955454579!2d7.400985355419912!3d9.102197700000016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e75e58975d8f3%3A0xc46a7c37597905ce!2s2nd%20Avenue%20Cornershop%2C%20Gwarinpa!5e0!3m2!1sen!2sng!4v1749133497747!5m2!1sen!2sng"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </section>
 
 <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <div class="logo"><img src="./imgs/Logo_01B.jpg" alt="aysraelstudios logo" height="40px" width="45px"></div>
-                <h3>AYSRAEL Studios</h3>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="../imgs/logos/Logo_01B.jpg" alt="AYSRAEL Studios logo" height="50" width="50"/>
+                    </div>
+                    <h3>AYSRAEL Studios</h3>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                </div>
+                <div class="footer-contact">
+                    <p><i class="fa-solid fa-location-dot"></i> Rd 211, 2nd avenue, Gwarimpa, Abuja.</p>
+                    <p><i class="fa-solid fa-phone"></i> <a href="tel:+2349036194499">+234-903 619 4499</a></p>
+                    <p><i class="fa-solid fa-phone"></i> <a href="tel:+2348104105763">+234-810 410 5763</a></p>
+                    <p><i class="fa-solid fa-envelope"></i> <a href="mailto:aysraelstudio@gmail.com">aysraelstudio@gmail.com</a></p>
+                </div>
+<!-- Social links (desktop only) -->
+                <div class="social-links">
+                    <a href="https://www.instagram.com/Aysraelstudio/#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://web.facebook.com/people/aysraelstudio/61574219829931/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@Aysraelstudiotv" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@Aysraelstudio" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
             </div>
-            <div class="footer-links">
-                <a href="../index.html">Home</a>
+            <div class="copyright">
+                <p>&copy; 2025 AYSRAEL Studios. All rights reserved.</p>
             </div>
-            <div class="footer-contact">
-                <p><i class="fas fa-map-marker-alt"></i>Rd 211, 2nd avenue, Gwarimpa, Abuja.</p>
-                <p><i class="fas fa-phone"></i><a href="tel:+234903 619 4499">+234-903 619 4499</a></p>
-                <p><i class="fas fa-phone"></i><a href="tel:+234810 410 5763">+234-810 410 5763</a></p>
-                <p><i class="fas fa-envelope"></i><a href="mailto:aysraelstudio@gmail.com">aysraelstudio@gmail.com</a></p>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 AYSRAEL Studios. All rights reserved.</p>
-        </div>
-    </footer>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="./script.js"></script>
-</body>
+        </footer>
+
+<!-- Floating WhatsApp -->
+        <a class="whatsapp-float" href="https://wa.me/2349036194499?text=Hi%20AYSRAEL%20Studios%2C%20I%27d%20like%20to%20book%20a%20session." target="_blank" rel="noopener" aria-label="Message us on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <script src="../links/script.js"></script>
+    </body>
 </html>

@@ -1,5 +1,1 @@
-@import "./styles/utils.css";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "/src/styles/utils.css";

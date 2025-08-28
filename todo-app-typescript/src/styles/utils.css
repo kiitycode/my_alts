@@ -1,3 +1,9 @@
+@import "/src/styles/utils.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ---------- Base / Global ---------- */
 @layer base {
   html, body, #root { @apply h-full; }
@@ -6,7 +12,7 @@
     @apply bg-japan bg-cover bg-fixed bg-center min-h-screen text-text font-sans m-0 flex justify-center items-center leading-relaxed;
   }
 
-  /* keep your selector, style with Tailwind */
+  /* app shell */
   main.container {
     @apply max-w-[960px] w-full p-8 md:p-6 bg-black/60 rounded-lgx shadow-lgx border border-white/5 flex flex-col;
   }
@@ -19,40 +25,69 @@
   a:hover { @apply underline; }
 }
 
-/* ---------- Components mapped to your class names ---------- */
+/* ---------- Components ---------- */
 @layer components {
   .form-group { @apply mb-4 last:mb-0; }
   label { @apply block mb-2 font-bold text-accent; }
 
-  /* inputs */
+  /* unified inputs/selects/textareas */
   .form-control {
-    @apply w-full bg-[rgba(34,37,46,0.8)] text-text border border-borderc p-3 rounded-smx text-base transition;
+    @apply w-full bg-gray-700 text-black placeholder-white/70
+            border border-gray-500 p-3 rounded-smx text-base transition;
   }
-  .form-control:focus { @apply outline-none border-accent ring-2 ring-[rgba(255,204,0,0.2)]; }
+  .form-control:focus {
+    @apply outline-none border-accent ring-2 ring-[rgba(255,204,0,0.30)];
+  }
   textarea.form-control { @apply min-h-[120px] resize-y; }
+
+  /* ensure SELECT dropdowns are readable */
+  select.form-control { @apply w-full bg-gray-700 text-black border border-gray-500; }
+  /* options can't use Tailwind @apply reliably across browsers */
+  select.form-control option {
+    background-color: #374151; /* gray-700 */
+    color: black;
+  }
 
   /* buttons */
   .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 rounded-smx bg-btnbg text-btntext font-bold cursor-pointer transition text-sm uppercase tracking-wide shadow-smx;
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-smx
+            bg-btnbg text-btntext font-bold cursor-pointer transition
+            text-sm uppercase tracking-wide shadow-smx;
   }
-  .btn:hover { @apply bg-btnhover -translate-y-[1px] shadow-sm; }
-  .btn:active { @apply translate-y-0; }
+  .btn:hover   { @apply bg-btnhover -translate-y-[1px] shadow-sm; }
+  .btn:active  { @apply translate-y-0; }
   .btn-primary { @apply bg-accent text-btntext; }
-  .btn-danger  { @apply bg-danger text-white; }
+
+  /* secondary (for BACK / neutral actions) */
+  .btn-secondary {
+    @apply bg-gray-600 text-white border border-gray-500;
+  }
+  .btn-secondary:hover { @apply bg-gray-500; }
+
+  /* delete = same style as logout */
+  .btn-delete {
+    @apply bg-transparent border border-danger text-danger px-3 py-2 rounded-smx transition;
+  }
+  .btn-delete:hover { @apply bg-danger text-white; }
+
+  /* existing logout button can reuse the same look */
+  .logout-btn { @apply btn-delete; }
 
   /* cards */
   .card { @apply rounded-mdx p-6 bg-darkbg shadow-mdx transition; }
   .card:hover { @apply -translate-y-1 shadow-lgx; }
 
-  /* layout helpers (use unique names to avoid collisions) */
+  /* layout helpers */
   .u-flex-between { @apply flex justify-between items-center gap-4; }
 
-  /* text helpers (avoid circular @apply) */
-  /* use Tailwind's built-in `text-center` directly in JSX */
-  .u-text-danger { @apply text-danger text-sm mt-2; } /* former .text-danger */
+  /* text helpers */
+  .u-text-danger { @apply text-danger text-sm mt-2; }
 
   /* pagination */
   .pagination-controls { @apply flex gap-3 justify-center flex-wrap mt-6; }
+
+  /* button row spacing */
+  .btn-row { @apply flex gap-3 mt-4; }
 
   /* spinner */
   .spinner {
@@ -72,9 +107,6 @@
   .user-header { @apply flex justify-between items-center mb-6 pb-4 border-b border-accent/20; }
   .user-greeting { @apply text-lg text-accent; }
   .user-greeting span { @apply font-bold capitalize; }
-
-  .logout-btn { @apply bg-transparent border border-danger text-danger px-3 py-2 rounded-smx transition; }
-  .logout-btn:hover { @apply bg-danger text-white; }
 
   /* new task section */
   .new-task-section { @apply mt-4 p-6 bg-[rgba(26,29,37,0.7)] rounded-mdx border border-borderc; }

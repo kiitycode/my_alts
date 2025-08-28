@@ -1,0 +1,97 @@
+/* ---------- Base / Global ---------- */
+@layer base {
+  html, body, #root { @apply h-full; }
+
+  body {
+    @apply bg-japan bg-cover bg-fixed bg-center min-h-screen text-text font-sans m-0 flex justify-center items-center leading-relaxed;
+  }
+
+  /* keep your selector, style with Tailwind */
+  main.container {
+    @apply max-w-[960px] w-full p-8 md:p-6 bg-black/60 rounded-lgx shadow-lgx border border-white/5 flex flex-col;
+  }
+
+  h1, h2, h3 { @apply text-accent mt-0 leading-snug text-center; }
+  h1 { @apply text-2xl md:text-3xl mb-6 drop-shadow; }
+  h2 { @apply text-xl md:text-2xl mb-4; }
+
+  a { @apply text-linkc no-underline transition-colors; }
+  a:hover { @apply underline; }
+}
+
+/* ---------- Components mapped to your class names ---------- */
+@layer components {
+  .form-group { @apply mb-4 last:mb-0; }
+  label { @apply block mb-2 font-bold text-accent; }
+
+  /* inputs */
+  .form-control {
+    @apply w-full bg-[rgba(34,37,46,0.8)] text-text border border-borderc p-3 rounded-smx text-base transition;
+  }
+  .form-control:focus { @apply outline-none border-accent ring-2 ring-[rgba(255,204,0,0.2)]; }
+  textarea.form-control { @apply min-h-[120px] resize-y; }
+
+  /* buttons */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-smx bg-btnbg text-btntext font-bold cursor-pointer transition text-sm uppercase tracking-wide shadow-smx;
+  }
+  .btn:hover { @apply bg-btnhover -translate-y-[1px] shadow-sm; }
+  .btn:active { @apply translate-y-0; }
+  .btn-primary { @apply bg-accent text-btntext; }
+  .btn-danger  { @apply bg-danger text-white; }
+
+  /* cards */
+  .card { @apply rounded-mdx p-6 bg-darkbg shadow-mdx transition; }
+  .card:hover { @apply -translate-y-1 shadow-lgx; }
+
+  /* layout helpers (use unique names to avoid collisions) */
+  .u-flex-between { @apply flex justify-between items-center gap-4; }
+
+  /* text helpers (avoid circular @apply) */
+  /* use Tailwind's built-in `text-center` directly in JSX */
+  .u-text-danger { @apply text-danger text-sm mt-2; } /* former .text-danger */
+
+  /* pagination */
+  .pagination-controls { @apply flex gap-3 justify-center flex-wrap mt-6; }
+
+  /* spinner */
+  .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid rgb(255 204 0);
+    border-radius: 9999px;
+    width: 32px;
+    height: 32px;
+    margin: 1rem auto;
+    @apply animate-spin;
+  }
+
+  /* hover pulse */
+  .pulse:hover { @apply animate-pulse-slow; }
+
+  /* user header */
+  .user-header { @apply flex justify-between items-center mb-6 pb-4 border-b border-accent/20; }
+  .user-greeting { @apply text-lg text-accent; }
+  .user-greeting span { @apply font-bold capitalize; }
+
+  .logout-btn { @apply bg-transparent border border-danger text-danger px-3 py-2 rounded-smx transition; }
+  .logout-btn:hover { @apply bg-danger text-white; }
+
+  /* new task section */
+  .new-task-section { @apply mt-4 p-6 bg-[rgba(26,29,37,0.7)] rounded-mdx border border-borderc; }
+}
+
+/* ---------- Responsive tweaks ---------- */
+@layer utilities {
+  @media (max-width: 768px) {
+    main.container { @apply p-6 md:p-6; }
+    h1 { @apply text-3xl mb-6; }
+    h2 { @apply text-2xl; }
+    .u-flex-between { @apply flex-col items-stretch; }
+  }
+  @media (max-width: 480px) {
+    body { @apply p-3; }
+    main.container { @apply p-4 md:p-4; }
+    h1 { @apply text-2xl mb-4; }
+    .btn { @apply w-full; }
+  }
+}

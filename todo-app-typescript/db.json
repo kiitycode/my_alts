@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Wire TS to pages",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "description": "Finish pages & services",
+      "userId": "user-123",
+      "createdAt": "2025-08-27T00:00:00.000Z",
+      "updatedAt": "2025-08-27T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Replace CSS with Tailwind",
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "description": "",
+      "userId": "user-123",
+      "createdAt": "2025-08-27T00:05:00.000Z",
+      "updatedAt": "2025-08-27T00:05:00.000Z"
+    }
+  ]
+}

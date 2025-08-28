@@ -1,12 +1,12 @@
 import type { Task, NewTask, UpdateTask, ID } from "../types/tasks";
 
-/** Choose your backend */
+/** Backend Options */
 const BACKEND: "local" | "jsonserver" | "mockapi" | "jsonplaceholder" = "jsonserver";
 
 /** Configs */
-const JSON_SERVER_URL = "/api"; // add Vite proxy to http://localhost:3001
-const MOCKAPI_URL = import.meta.env.VITE_MOCKAPI_URL || ""; // e.g. https://foo.mockapi.io/api
-const JSON_PLACEHOLDER_URL = "https://jsonplaceholder.typicode.com"; // mapped adapter
+const JSON_SERVER_URL = "/api"; 
+const MOCKAPI_URL = import.meta.env.VITE_MOCKAPI_URL || "";
+const JSON_PLACEHOLDER_URL = "https://jsonplaceholder.typicode.com";
 
 /* ----------------- helpers ----------------- */
 async function http<T>(url: string, init?: RequestInit): Promise<T> {
@@ -96,7 +96,7 @@ const jsonServer = {
   },
 };
 
-/** MockAPI.io (hosted CRUD) – create a `tasks` resource with matching fields */
+/** MockAPI.io – create a `tasks` resource with matching fields */
 const mockapi = {
   async list(userId?: ID): Promise<Task[]> {
     const url = userId ? `${MOCKAPI_URL}/tasks?userId=${encodeURIComponent(String(userId))}` : `${MOCKAPI_URL}/tasks`;

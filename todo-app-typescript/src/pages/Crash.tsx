@@ -1,3 +1,7 @@
+// src/pages/Crash.tsx
+import { useEffect } from "react";
+
 export default function Crash() {
-  throw new Error("Intentional crash");
+  useEffect(() => { throw new Error("Intentional crash"); }, []);
+  return null;
 }

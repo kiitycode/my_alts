@@ -84,7 +84,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// 3) Audio clip limiter (100s max) + FA6 icon fixes
+// Audio clip limiter (100s max) + FA6 icon fixes
 document.querySelectorAll('.demo-track').forEach(track => {
   const audio = track.querySelector('audio');
   const playBtn = track.querySelector('.play-btn');
@@ -129,7 +129,56 @@ document.querySelectorAll('.demo-track').forEach(track => {
   });
 });
 
-// 4) Testimonial Slider
+// Seek within 0..100s for each demo-track
+window.addEventListener('load', () => {
+  document.querySelectorAll('.demo-track').forEach(track => {
+    const audio = track.querySelector('audio');
+    const bar   = track.querySelector('.progress-bar');
+    const timeEl = track.querySelector('.current-time');
+    const MAX = 100; // must match your limiter
+
+    if (!audio || !bar) return;
+
+    // If attributes are missing, set sensible defaults
+    if (!bar.hasAttribute('min'))  bar.min  = 0;
+    if (!bar.hasAttribute('max'))  bar.max  = 100;
+    if (!bar.hasAttribute('step')) bar.step = 0.5;
+
+    const cappedDuration = () => Math.min(audio.duration || MAX, MAX);
+    const pctToTime = pct => (Math.max(0, Math.min(100, pct)) / 100) * cappedDuration();
+
+    const updateTimeText = (t) => {
+      if (!timeEl) return;
+      const m = Math.floor(t / 60);
+      const s = String(Math.floor(t % 60)).padStart(2, '0');
+      timeEl.textContent = `${m}:${s}`;
+    };
+
+    // Drag/click to seek (0..100%)
+    bar.addEventListener('input', () => {
+      const pct = Number(bar.value) || 0;
+      const newTime = pctToTime(pct);
+      audio.currentTime = newTime;       // jumps immediately
+      updateTimeText(newTime);           // reflect instantly
+    });
+
+    // Keep slider in sync while playing (your existing timeupdate also does this;
+    // this line is lightweight and won’t interfere)
+    audio.addEventListener('timeupdate', () => {
+      // Map currentTime (clamped by your limiter) back to 0..100 slider
+      const current = Math.min(audio.currentTime, MAX);
+      bar.value = (current / MAX) * 100;
+    });
+
+    // Reset slider once metadata is ready
+    audio.addEventListener('loadedmetadata', () => {
+      bar.value = 0;
+      updateTimeText(0);
+    });
+  });
+});
+
+// Testimonial Slider
 const testimonials = document.querySelectorAll('.testimonial');
 let currentTestimonial = 0;
 
@@ -155,7 +204,7 @@ if (testimonials.length) {
   showTestimonial(currentTestimonial);
 }
 
-// 5) Services Carousel (infinite feel)
+// Services Carousel (infinite feel)
 window.addEventListener('DOMContentLoaded', () => {
   const carousel = document.querySelector('.services-carousel');
   const cards = document.querySelectorAll('.service-card');
@@ -224,7 +273,7 @@ window.addEventListener('DOMContentLoaded', () => {
   startAutoScroll();
 });
 
-// 6) Team Section – Dynamic Cards + Modal
+// Team Section – Dynamic Cards + Modal
 window.addEventListener('DOMContentLoaded', () => {
   const teamMembers = [
     { name: "Seyi Ademuwagun", title: "Sound Engineer", nickname: "\"SPYROSOUND\"", bio: "Meticulous, visionary, and obsessed with sonic perfection, Seyi doesn't just engineer sound – he sculpts emotional landscapes. With golden ears and technical wizardry, he transforms raw audio into breathtaking experiences that grip the soul.", image: "./imgs/pfps/Seyi_A.jpg", social: { instagram: "#", facebook: "#", tiktok: "#" } },
@@ -294,7 +343,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7) Inject floating WhatsApp button on contact page (no HTML changes needed)
+  // Inject floating WhatsApp button on contact page (no HTML changes needed)
   const contactSection = document.getElementById('contact');
   if (contactSection && !document.querySelector('.whatsapp-float')) {
     const wa = document.createElement('a');

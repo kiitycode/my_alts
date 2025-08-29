@@ -340,3 +340,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
   groups.forEach(g => io.observe(g));
 });
+
+// Dots for Services carousel (non-intrusive)
+window.addEventListener('load', () => {
+  const carousel = document.querySelector('.services-carousel');
+  if (!carousel) return;
+
+  // After your cloning runs, total = 3 * N (you prepend + append one set)
+  const allCards = carousel.querySelectorAll('.service-card');
+  if (!allCards.length) return;
+
+  const totalCards = allCards.length;
+  const N = Math.floor(totalCards / 3);      // original count
+  if (N < 1) return;
+
+  // Build dots just after the carousel
+  const dotsWrap = document.createElement('div');
+  dotsWrap.className = 'services-dots';
+  dotsWrap.setAttribute('role', 'tablist');
+  dotsWrap.setAttribute('aria-label', 'Service slides');
+  carousel.after(dotsWrap);
+
+  const dots = Array.from({ length: N }, (_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'dot';
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', `Go to slide ${i + 1} of ${N}`);
+    b.addEventListener('click', () => {
+      const step = (allCards[0]?.offsetWidth || 300) + 25; // match your base calc
+      const targetLeft = (N + i) * step;                   // jump into the middle (original window)
+      carousel.scrollTo({ left: targetLeft, behavior: 'smooth' });
+    });
+    dotsWrap.appendChild(b);
+    return b;
+  });
+
+  // Update active dot from scrollLeft
+  let ticking = false;
+  function updateActiveFromScroll() {
+    const step = (allCards[0]?.offsetWidth || 300) + 25; // same formula as your base
+    const rawIndex = Math.round(carousel.scrollLeft / step);
+    // Normalize to original range (your originals live from index N .. 2N-1)
+    const normalized = ((rawIndex - N) % N + N) % N;
+    dots.forEach((d, idx) => d.setAttribute('aria-current', idx === normalized ? 'true' : 'false'));
+  }
+
+  carousel.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      updateActiveFromScroll();
+      ticking = false;
+    });
+  }, { passive: true });
+
+  // Keep in sync on resize (card width may change)
+  window.addEventListener('resize', () => {
+    updateActiveFromScroll();
+  });
+
+  // Initial state
+  updateActiveFromScroll();
+});

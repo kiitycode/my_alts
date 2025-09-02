@@ -999,3 +999,20 @@ footer .copyright {
   outline-offset: 3px;
   border-radius: 8px;
 }
+
+.whatsapp-float {
+  position: fixed; right: 20px; bottom: 20px; z-index: 2000;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; color: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.whatsapp-float i { font-size: 26px; line-height: 1; }
+.whatsapp-float:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,0.25); }
+
+@media (max-width: 768px) {
+  .whatsapp-float { right: 16px; bottom: 16px; width: 52px; height: 52px; }
+  .whatsapp-float i { font-size: 24px; }
+}

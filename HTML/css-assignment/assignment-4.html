@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS | Assignment 4</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: azure;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                box-sizing: border-box;
+                min-height: 100vh;
+            }
+            .content {
+                display: flex;
+                margin: 2%;
+                padding: 2%;
+            }
+            .nav-container {
+                box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+                background-color: teal;
+                text-align: center;
+            }
+            .nav-list {
+                list-style: none;
+                margin: 0;
+                justify-content: center;
+                align-items: center;
+                padding: 0.3rem;
+                box-shadow: #333;
+            }
+            .nav-list a {
+                padding: 0.5rem;
+                border: 1px solid black;
+                border-radius: 15%;
+                background-color: gainsboro;
+                text-decoration: none;
+                color: black;
+                transition: background-color 0.3s ease-in-out;
+            }
+            .nav-list a:hover {
+                background-color: #333;
+                color: #fff;
+            }
+            .nav-list a.active {
+                background-color: #333;
+                color: #fff;
+            }
+            .message {
+                margin: 15rem;
+                padding: 2.5rem;
+                font-size: larger;
+            }
+            .form-container {
+                background: #fff;
+                padding: 20px 30px;
+                border-radius: 8px;
+                width: 100%;
+                max-width: 450px;
+                border: 1px solid;
+                border-color: aliceblue;
+                box-shadow: 0 0 5px;
+            }
+            .form-row {
+                display: flex;
+                margin-bottom: 10px;
+                gap: 3%;
+                max-width: 500px;
+            }
+            .form-group {
+            margin-bottom: 10px;
+            flex: 1;
+            margin-bottom: 10x;
+            }
+            .form-group label {
+                display: block;
+                font-size: 1em;
+                margin-bottom: 10px;
+                color: #333;
+                font-weight: bold;
+            }
+            .form-group input, .form-group select {
+                width: 80%;
+                padding: 3%;
+                font-size: 1em;
+                border: 1px solid;
+                border-radius: 5px;
+            }
+            .form-group input:focus, .form-group input:hover {
+                border-color: burlywood;
+                outline: none;
+            }
+            button {
+            width: 90%;
+            padding: 1em;
+            background: mediumseagreen;
+            color: #fff;
+            font-size: 1.2em;
+            border-radius: 5px;
+            margin-top: 0.4em;
+            cursor: pointer;
+            }
+            button:hover {
+                background: blueviolet;
+            }
+            @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+                margin: 1%;
+                padding: 1%;
+            }
+            .message {
+                margin: 2rem;
+                padding: 1rem;
+                text-align: center;
+            }
+            .form-container {
+                max-width: 100%;
+                padding: 15px;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .form-group input, .form-group select {
+                width: 100%;
+            }
+            button {
+                width: 100%;
+            }
+            .nav-list a {
+                padding: 0.3rem;
+                font-size: 0.9em;
+            }
+            }
+            @media (max-width: 480px) {
+            .message {
+                margin: 1rem;
+                padding: 0.5rem;
+            }
+            .form-container {
+                padding: 10px;
+            }
+            .nav-list a {
+                padding: 0.2rem;
+                font-size: 0.8em;
+            }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="nav-container">
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-list"><a href="./index.html">HOME</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <div class="message">
+                <img src="#" alt="Company Logo" height="100px" width="100px">
+                <h2>For Individuals</h2>
+                <p>Start benefiting from the wellness experience. For companies looking on increasing productivity and improving organisational wellness</p>
+            </div>
+            <div class="form-container">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender">
+                            <option>Select Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="DOB">Date Of Birth</label>
+                        <input type="date" id="DOB" placeholder="DD/MM/YYYY">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="weight">Weight (KG)</label>
+                        <input type="weight" id="weight" placeholder="Enter Weight here">
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Height (CM)</label>
+                        <input type="height" id="height" placeholder="Enter Height here">
+                    </div>
+                </div>
+                <div class="form-group full width">
+                    <label for="info">Activity Level</label>
+                    <select id="activity">
+                        <option>Select Activity Level</option>
+                        <option>Very Active</option>
+                        <option>Slightly Active</option>
+                        <option>Less Active</option>
+                        <option>Not Active</option>
+                        <option>Disabled</option>
+                    </select>
+                </div>
+                <div class="form-group full width">
+                    <label for="password">Password</label>
+                    <input type="password" id="password">
+                </div>
+                <div class="submit-button">
+                    <button type="submit">Register</button>
+                </div>
+                <h4>By Clicking Register, you agree to our <a href="#">Terms of Use</a> and our <a href="#">Privacy Policy</a></h4>
+            </div>
+        
+    </body>

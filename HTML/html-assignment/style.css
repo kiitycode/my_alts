@@ -1,0 +1,287 @@
+/* Importing Font Aweseome*/
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+/* Page Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 1.5;
+    background-image: radial-gradient(circle, #2d5ac3, #d8dde5);
+    color: #333;
+    font-size: 20px;
+    }
+
+/* Navigation Bar Styling*/
+    #header {
+      color: #fff;
+      padding: 0.3em;
+      margin: auto;
+      box-shadow: #333;
+      font-weight: bolder;
+  }
+  
+  .nav-list {
+      list-style: none;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2em;
+      box-shadow: #333;
+      justify-content: space-evenly;
+  }
+  
+  .nav-list a {
+      padding: 18px;
+      margin-right: 20px;
+      border: 1px solid black;
+      border-radius: 1em;
+      background-color: gainsboro;
+      text-decoration: none;
+      color: black
+      }
+  
+  .nav-list a:hover {
+      background-color: #333;
+      color: #fff;
+  }
+  
+  .nav-list a.active {
+      background-color: #333;
+      color: #fff;
+      }
+
+/* Profile section styling */
+.highlight {
+  color:darkblue;
+  }
+
+.profile {
+  text-align: center;
+  padding: 2rem 1rem;
+  }
+
+.profile img {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #007BFF;
+  border-radius: 50%;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  align-items: center;
+  border-color: #333;
+  background-color: white;
+  }
+
+.bio {
+  margin: 2em;
+  padding: 3em;
+  border: 2px solid;
+  border-radius: 2em;
+  background-color: #ddd;
+  box-shadow: #555;
+  }
+
+.list {
+  list-style: inside;
+  display: inline-block;
+  padding: 1%;
+  margin: 1%;
+  justify-content: space-between;
+  }
+
+.list a {
+  padding: 10px 20px;
+  margin-right: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: gainsboro;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  color: black
+  }
+
+.list a:hover {
+  background-color: #333;
+  color: #fff;
+  }
+
+.list a.active {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Contact section styling */
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px;
+}
+
+.contact-form, .contact-info {
+  flex-basis: 45%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2, .contact-info h2 {
+  margin-top: 0;
+}
+
+.form-group {
+  margin-bottom: 0.5em;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #555;
+}
+
+.socials {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.socials li {
+  margin-bottom: 10px;
+}
+
+.socials a {
+  color: #333;
+  text-decoration: none;
+}
+
+.socials a:hover {
+  color: #666;
+}
+
+.contact-info, .fa {
+  display: block;
+}
+
+footer, .fa-solid {
+  text-align: center;
+  font-size: larger;
+}
+
+.skill-list {
+  display: inline-block;
+  border: 1px solid;
+  margin: 1%;
+  padding: 1%;
+  list-style: none;
+  border-radius: 10%;
+}
+
+.skill-list:hover {
+  background-color: #333;
+  color: burlywood;
+}
+
+.content {
+  display: block;
+  margin: 1%;
+  justify-content: center;
+  background: url('https://www.transparenttextures.com/patterns/brushed-alum.png');
+  padding: 2em;
+  border: 1px solid #bbb;
+  border-radius: 2em;
+}
+
+.content, h1, h2 {
+  text-align: center;
+  font-size: 1.5em;
+  color: #333;
+}
+
+@media screen and (max-width: 768px) { /* Tablet styles */
+  .nav-list {
+    flex-direction: column;
+    padding: 1em;
+  }
+  
+  .nav-list a {
+    margin: 0.5em 0;
+  }
+
+  .bio {
+    padding: 1.5em;
+    margin: 1em;
+  }
+
+  .contact-container {
+    gap: 15px;
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) { /* Mobile styles */
+  body {
+    font-size: 16px;
+  }
+
+  .profile img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5em;
+  }
+
+  .nav-list a {
+    margin: 0.25em 0;
+    text-align: center;
+  }
+
+  .bio {
+    padding: 1em;
+    margin: 0.5em;
+    border-radius: 1em;
+  }
+
+  .contact-form, 
+  .contact-info {
+    flex-basis: 100%;
+    margin: 0.5em 0;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 8px;
+  }
+}

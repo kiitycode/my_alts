@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --bg:#0b0d17; --text:#d0d6f9; --white:#fff; }
+html,body{ background:var(--bg); color:var(--text); }
+
+/* (optional) If you still want a .wrap helper, define it with plain CSS values */
+@layer utilities {
+  .wrap {
+    max-width: 72rem;       /* 6xl */
+    margin-inline: auto;
+    padding-inline: 1.5rem; /* px-6 */
+  }
+}
+

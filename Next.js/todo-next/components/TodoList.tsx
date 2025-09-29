@@ -2,7 +2,7 @@
 
     import React from 'react';
     import Link from 'next/link';
-    import type { Todo } from '@/types/todo';
+    import type { Todo } from '../types/todo';
 
     interface Props {
     todos: Todo[];

@@ -103,7 +103,7 @@ const mockapi = {
     return http<Task[]>(url);
   },
   async get(id: ID): Promise<Task> {
-    return http<Task>(`${MOCKAPI_URLn,p}/tasks/${id}`);
+    return http<Task>(`${MOCKAPI_URL}/tasks/${id}`);
   },
   async create(input: NewTask): Promise<Task> {
     const now = new Date().toISOString();

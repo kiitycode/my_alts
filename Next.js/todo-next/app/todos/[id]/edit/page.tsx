@@ -1,9 +1,9 @@
     'use client';
     import React, { useEffect, useState } from 'react';
     import { useParams, useRouter } from 'next/navigation';
-    import { fetchTaskById, updateTask } from '@/services/api';
-    import { useAuth } from '@/context/AuthContext';
-    import type { Todo } from '@/types/todo';
+    import { fetchTaskById, updateTask } from '../../../../services/api';
+    import { useAuth } from '../../../../context/AuthContext';
+    import type { Todo } from '../../../../types/todo';
 
     export default function EditTodoPage(): JSX.Element {
     const { id } = useParams();

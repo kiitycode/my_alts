@@ -16,8 +16,8 @@
     "incremental": true,
     "types": ["node", "jest"],
     "noEmit": true,
-    "baseUrl": ".",          // Add this
-    "paths": {               // Add this
+    "baseUrl": ".",            // <-- add this
+    "paths": {                 // <-- add this
       "@/*": ["./*"]
     },
     "plugins": [

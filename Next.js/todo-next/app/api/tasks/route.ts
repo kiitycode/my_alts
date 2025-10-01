@@ -1,5 +1,4 @@
-    // app/api/tasks/route.ts
-    import { NextResponse } from 'next/server';
+    import { NextResponse, type NextRequest } from 'next/server';
     import type { Todo } from '../../../types/todo';
 
     const globalKey = '__TODO_STORE__';
@@ -9,9 +8,11 @@
     return NextResponse.json(store);
     }
 
-    export async function POST(req: Request) {
+    export async function POST(req: NextRequest) {
     const body = await req.json().catch(() => null);
-    if (!body) return NextResponse.json({ error: 'invalid body' }, { status: 400 });
+    if (!body) {
+        return NextResponse.json({ error: 'invalid body' }, { status: 400 });
+    }
 
     const item: Todo = {
         id: Date.now().toString(),

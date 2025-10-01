@@ -1,9 +1,6 @@
-    <template>
-    <router-view />
-    </template>
+    <template><router-view /></template>
 
-    <script setup>
-    </script>
+    <script setup></script>
 
     <style>
     /* global quick fallback */

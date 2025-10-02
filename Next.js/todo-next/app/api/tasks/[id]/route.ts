@@ -1,28 +1,36 @@
     // app/api/tasks/[id]/route.ts
-    import { NextResponse } from 'next/server';
-    import type { Todo } from '../../../../types/todo';
+    import { NextResponse, type NextRequest } from 'next/server';
+    import type { Todo } from '@/types/todo';
 
-    const globalKey = '__TODO_STORE__';
-    const store: Todo[] = ((globalThis as any)[globalKey] ||= []);
+    export const runtime = 'nodejs';
+    export const dynamic = 'force-dynamic';
+    export const preferredRegion = 'iad1';
 
-    export async function GET(_req: Request, { params }: { params: { id: string } }) {
-    const item = store.find((t) => String(t.id) === params.id);
-    if (!item) return NextResponse.json({ error: 'not found' }, { status: 404 });
-    return NextResponse.json(item);
+    const key = '__TODO_STORE__';
+    const store: Todo[] = ((globalThis as any)[key] ||= []);
+
+    type Params = { id: string };
+
+    export async function GET(_req: NextRequest, { params }: { params: Promise<Params> }) {
+    const { id } = await params;
+    const todo = store.find(t => String(t.id) === id);
+    if (!todo) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+    return NextResponse.json(todo);
     }
 
-    export async function PATCH(req: Request, { params }: { params: { id: string } }) {
-    const body = await req.json().catch(() => null);
-    if (!body) return NextResponse.json({ error: 'invalid body' }, { status: 400 });
-    const idx = store.findIndex((t) => String(t.id) === params.id);
-    if (idx === -1) return NextResponse.json({ error: 'not found' }, { status: 404 });
-    store[idx] = { ...store[idx], ...body };
+    export async function PATCH(req: NextRequest, { params }: { params: Promise<Params> }) {
+    const { id } = await params;
+    const body = (await req.json()) as Partial<Todo>;
+    const idx = store.findIndex(t => String(t.id) === id);
+    if (idx === -1) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+    store[idx] = { ...store[idx], ...body, updatedAt: new Date().toISOString() } as Todo;
     return NextResponse.json(store[idx]);
     }
 
-    export async function DELETE(_req: Request, { params }: { params: { id: string } }) {
-    const idx = store.findIndex((t) => String(t.id) === params.id);
-    if (idx === -1) return NextResponse.json({ error: 'not found' }, { status: 404 });
-    store.splice(idx, 1);
-    return NextResponse.json({ ok: true });
+    export async function DELETE(_req: NextRequest, { params }: { params: Promise<Params> }) {
+    const { id } = await params;
+    const idx = store.findIndex(t => String(t.id) === id);
+    if (idx === -1) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+    const [deleted] = store.splice(idx, 1);
+    return NextResponse.json(deleted);
     }

@@ -1,6 +1,15 @@
-node_modules
-.next
-.env.local
-dist
+# dependencies
+node_modules/
+
+# builds
+.next/
+out/
+dist/
+
+# env
+.env*
+!.env.example
+
+# misc
 .DS_Store
-.vscode
+.vercel/

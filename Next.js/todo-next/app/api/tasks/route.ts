@@ -1,29 +1,39 @@
-    import { NextResponse, type NextRequest } from 'next/server';
-    import type { Todo } from '../../../types/todo';
+  // app/api/tasks/route.ts
+  import { NextResponse, type NextRequest } from 'next/server';
+  import type { Todo } from '@/types/todo';
 
-    const globalKey = '__TODO_STORE__';
-    const store: Todo[] = ((globalThis as any)[globalKey] ||= []);
+  export const runtime = 'nodejs';
+  export const dynamic = 'force-dynamic';
+  export const preferredRegion = 'iad1'; // pick one region to reduce split state
 
-    export async function GET() {
-    return NextResponse.json(store);
-    }
+  const key = '__TODO_STORE__';
+  const store: Todo[] = ((globalThis as any)[key] ||= []);
 
-    export async function POST(req: NextRequest) {
-    const body = await req.json().catch(() => null);
-    if (!body) {
-        return NextResponse.json({ error: 'invalid body' }, { status: 400 });
-    }
+  export async function GET(req: NextRequest) {
+    const { searchParams } = new URL(req.url);
+    const uid = searchParams.get('userId');
+    if (!uid) return NextResponse.json(store);
+    const filtered = store.filter(t => String(t.userId ?? t.owner ?? t.user_id) === uid);
+    return NextResponse.json(filtered);
+  }
 
-    const item: Todo = {
-        id: Date.now().toString(),
-        name: body.name ?? body.text ?? 'Untitled',
-        description: body.description ?? '',
-        status: body.status ?? 'TODO',
-        priority: body.priority ?? 'LOW',
-        owner: body.owner ?? body.user_id ?? null,
-        isTemp: false,
+  export async function POST(req: NextRequest) {
+    const body = (await req.json()) as any;
+    if (!body?.name) return NextResponse.json({ error: 'name required' }, { status: 400 });
+
+    const todo: Todo & { userId?: string | number; owner?: string | number; user_id?: string | number } = {
+      id: body.id ?? crypto.randomUUID(),
+      name: body.name,
+      description: body.description ?? '',
+      status: body.status ?? 'TODO',
+      priority: body.priority ?? 'Low',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      userId: body.userId,
+      owner: body.owner,
+      user_id: body.user_id,
     };
 
-    store.push(item);
-    return NextResponse.json(item, { status: 201 });
-    }
+    store.push(todo);
+    return NextResponse.json(todo, { status: 201 });
+  }

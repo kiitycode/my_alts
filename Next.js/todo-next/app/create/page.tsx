@@ -1,118 +1,68 @@
     'use client';
+
     import React from 'react';
-    import { useForm } from 'react-hook-form';
+    import { useForm, type SubmitHandler } from 'react-hook-form';
     import { useRouter } from 'next/navigation';
     import { createTask } from '../../services/api';
     import { useAuth } from '../../context/AuthContext';
     import type { Todo } from '../../types/todo';
 
-    type FormValues = {
-    name: string;
-    status: string;
-    priority: string;
-    description?: string;
-    };
+    type FormValues = { name: string; description: string; status: Todo['status']; priority: Todo['priority'] };
 
-    export default function CreateTaskPage(): JSX.Element {
+    export default function CreateTaskPage(): React.ReactElement {
     const { user } = useAuth();
     const router = useRouter();
-    const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<FormValues>();
 
-    React.useEffect(() => {
-        if (!user) router.replace('/login');
-    }, [user, router]);
+    const { register, handleSubmit, formState: { errors, isSubmitting }, reset } =
+        useForm<FormValues>({ defaultValues: { name: '', description: '', status: 'TODO', priority: 'Low' } });
 
-    const onSubmit = async (data: FormValues) => {
+    const [err, setErr] = React.useState<string | null>(null);
+
+    if (!user) return <div className="p-6 text-center">Redirecting…</div>;
+
+    const onSubmit: SubmitHandler<FormValues> = async (data) => {
+        setErr(null);
         try {
-        const created = await createTask(
-            {
-            name: data.name,
-            status: data.status,
-            priority: data.priority,
-            description: data.description || ''
-            } as Partial<Todo>,
-            user!.id as any
-        );
-
-        if ((created as any).isTemp) {
-            alert('Saved locally. Will sync when network/API is available.');
-        }
-
+        await createTask(data, user.id as string | number);
         reset();
-
-        // Route back to Home page and refresh it to show the new task
-        router.push('/');
-        router.refresh(); // triggers a refresh so Home re-fetches tasks
-        } catch (err: any) {
-        alert(`Failed to create task: ${err?.message || err}`);
-        console.error('Creation error:', err);
+        router.push('/?r=1');
+        } catch (e) {
+        setErr((e as Error).message);
         }
     };
 
     return (
-        <section>
+        <>
         <h1>Create Task</h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-2">
-            <div className="mb-1">
-            <label htmlFor="name">Name</label><br />
-            <input
-                id="name"
-                {...register('name', { required: 'Task name is required' })}
-                placeholder="e.g. Buy groceries"
-                className="form-control"
-            />
-            {errors.name && <p className="text-danger">{errors.name.message}</p>}
+        {err && <div className="text-danger mb-2">{err}</div>}
+        <form onSubmit={handleSubmit(onSubmit)} className="card">
+            <div className="form-group">
+            <label>Name</label>
+            <input placeholder="Name" {...register('name', { required: 'Name is required' })} />
+            {errors.name && <div className="text-danger">{errors.name.message}</div>}
             </div>
 
-            <div className="mb-1">
-            <label htmlFor="description">Description</label><br />
-            <textarea
-                id="description"
-                {...register('description')}
-                placeholder="Optional details..."
-                className="form-control"
-            />
+            <div className="form-group">
+            <label>Description</label>
+            <textarea placeholder="Description" {...register('description')} />
             </div>
 
-            <div className="mb-1">
-            <label>Status</label><br />
-            <select {...register('status', { required: 'Status is required' })}>
-                <option value="">-- Select --</option>
-                <option value="TODO">📝 TODO</option>
-                <option value="IN_PROGRESS">🚧 In Progress</option>
-                <option value="DONE">✅ Done</option>
-                <option value="CANCELLED">❌ Cancelled</option>
+            <div className="flex-between">
+            <select {...register('status')}>
+                <option value="TODO">TODO</option>
+                <option value="IN_PROGRESS">IN PROGRESS</option>
+                <option value="DONE">DONE</option>
             </select>
-            {errors.status && <p className="text-danger">{errors.status.message}</p>}
-            </div>
-
-            <div className="mb-1">
-            <label>Priority</label><br />
-            <select {...register('priority', { required: 'Priority is required' })}>
-                <option value="">-- Select --</option>
-                <option value="LOW">Low</option>
-                <option value="MEDIUM">Medium</option>
-                <option value="HIGH">High</option>
+            <select {...register('priority')}>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
             </select>
-            {errors.priority && <p className="text-danger">{errors.priority.message}</p>}
-            </div>
-
-            <div className="flex-between mt-2">
-            <button
-                type="button"
-                className="btn"
-                onClick={() => {
-                router.push('/');
-                router.refresh(); // refresh Home on cancel as well
-                }}
-            >
-                ⬅ Cancel
-            </button>
-            <button type="submit" className="btn" disabled={isSubmitting}>
-                {isSubmitting ? 'Saving...' : '💾 Save'}
+            <button type="submit" disabled={isSubmitting} className="btn">
+                {isSubmitting ? 'Saving…' : 'Create'}
             </button>
             </div>
         </form>
-        </section>
+        </>
     );
     }

@@ -6,15 +6,14 @@ import { AuthProvider } from '../context/AuthContext';
 
 export const metadata = { title: 'Todo Next', description: 'Migrated todo app' };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }): React.ReactElement {
   return (
     <html lang="en">
-      <body className="bg-slate-50 min-h-screen">
+      <body className="min-h-screen flex flex-col p-4">
         <AuthProvider>
           <Navbar />
-          <main className="min-h-[60vh] flex justify-center">
-            {/* shared panel styling applied via .app-panel in globals.css */}
-            <div className="w-full md:w-1/2 max-w-3xl mx-auto px-4 py-6 app-panel">
+          <main className="flex-1 my-6 flex justify-center">
+            <div className="w-full md:w-1/2 max-w-3xl mx-auto app-panel">
               {children}
             </div>
           </main>

@@ -1,126 +1,80 @@
     'use client';
+
     import React, { useEffect, useState } from 'react';
+    import Link from 'next/link';
     import { useParams, useRouter } from 'next/navigation';
-    import { useAuth } from '../../../context/AuthContext';
-    import { fetchTaskById, updateTask, deleteTask } from '../../../services/api';
+    import { fetchTaskById, deleteTask } from '../../../services/api';
     import type { Todo } from '../../../types/todo';
 
-    export default function TaskDetailsPage() {
-    const { id } = useParams();
-    const { user } = useAuth();
+    export default function TaskDetailsPage(): React.ReactElement {
     const router = useRouter();
+    const params = useParams();
+    const rawId = params?.id as string | string[] | undefined;
+    const id = Array.isArray(rawId) ? rawId[0] : rawId;
+
     const [task, setTask] = useState<Todo | null>(null);
     const [loading, setLoading] = useState(true);
-    const [editing, setEditing] = useState(false);
-    const [form, setForm] = useState<Partial<Todo>>({});
+    const [err, setErr] = useState<string | null>(null);
+    const [deleting, setDeleting] = useState(false);
 
     useEffect(() => {
-        if (!user) {
-        router.replace('/login');
-        return;
-        }
-        if (!id) return;
-
+        let mounted = true;
         (async () => {
         try {
-            const data = await fetchTaskById(id);
-            setTask(data);
-            setForm({
-            name: data.name,
-            description: data.description,
-            status: data.status,
-            priority: data.priority,
-            });
-        } catch (err) {
-            console.error(err);
+            if (!id) return;
+            const t = await fetchTaskById(id);
+            if (mounted) setTask(t);
+        } catch (e) {
+            if (mounted) setErr(e instanceof Error ? e.message : 'Failed to load');
         } finally {
-            setLoading(false);
+            if (mounted) setLoading(false);
         }
         })();
-    }, [id, user, router]);
+        return () => { mounted = false; };
+    }, [id]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    };
-
-    const handleSave = async () => {
-        if (!task) return;
+    async function handleDelete() {
+        if (!id) return;
+        if (!window.confirm('Delete this task?')) return;
         try {
-        const updated = await updateTask(task.id, form, user!.id as any);
-        setTask(updated);
-        setEditing(false);
-        } catch (err) {
-        console.error('Failed to update task', err);
-        alert('Failed to update task');
-        }
-    };
-
-    const handleDelete = async () => {
-        if (!task) return;
-        if (!confirm('Are you sure you want to delete this task?')) return;
-        try {
-        await deleteTask(task.id);
+        setDeleting(true);
+        await deleteTask(id);
         router.push('/');
-        } catch (err) {
-        console.error('Failed to delete task', err);
-        alert('Failed to delete task');
+        } catch (e) {
+        alert(e instanceof Error ? e.message : 'Delete failed');
+        } finally {
+        setDeleting(false);
         }
-    };
+    }
 
-    if (!user) return <div className="p-8">Redirecting...</div>;
-    if (loading) return <div className="p-8">Loading...</div>;
-    if (!task) return <div className="p-8">Task not found</div>;
+    if (!id) return <div className="text-center">Missing id</div>;
+    if (loading) return <div className="spinner" />;
+    if (err) return <div className="text-danger">{err}</div>;
+    if (!task) return <div className="text-center">Not found</div>;
 
     return (
-        <main className="max-w-2xl mx-auto p-6">
-        {editing ? (
-            <div className="space-y-3">
-            <input
-                name="name"
-                value={form.name || ''}
-                onChange={handleChange}
-                className="form-control"
-                placeholder="Task Name"
-            />
-            <textarea
-                name="description"
-                value={form.description || ''}
-                onChange={handleChange}
-                className="form-control"
-                placeholder="Description"
-            />
-            <select name="status" value={form.status || ''} onChange={handleChange} className="form-control">
-                <option value="">-- Select Status --</option>
-                <option value="TODO">📝 TODO</option>
-                <option value="IN_PROGRESS">🚧 In Progress</option>
-                <option value="DONE">✅ Done</option>
-                <option value="CANCELLED">❌ Cancelled</option>
-            </select>
-            <select name="priority" value={form.priority || ''} onChange={handleChange} className="form-control">
-                <option value="">-- Select Priority --</option>
-                <option value="LOW">Low</option>
-                <option value="MEDIUM">Medium</option>
-                <option value="HIGH">High</option>
-            </select>
-            <div className="flex gap-3">
-                <button onClick={handleSave} className="btn">💾 Save</button>
-                <button onClick={() => setEditing(false)} className="btn">Cancel</button>
+        <>
+        <h1>Task Details</h1>
+        <div className="card">
+            <div className="font-semibold text-lg mb-1">{task.name}</div>
+            <div className="text-sm mb-3" style={{ opacity: 0.85 }}>
+            {task.status} • {task.priority}
             </div>
-            </div>
-        ) : (
-            <>
-            <h1 className="text-2xl font-bold mb-2">{task.name}</h1>
-            <p className="mb-1"><strong>Status:</strong> {task.status}</p>
-            <p className="mb-1"><strong>Priority:</strong> {task.priority}</p>
-            {task.description && <p className="mb-4"><strong>Description:</strong> {task.description}</p>}
+            <p className="mb-3 whitespace-pre-wrap">{task.description}</p>
 
-            <div className="flex gap-3">
-                <button onClick={() => setEditing(true)} className="btn">✏️ Edit</button>
-                <button onClick={handleDelete} className="btn text-red-600 border-red-600">🗑 Delete</button>
-                <button onClick={() => router.push('/')} className="btn">⬅ Back</button>
+            <div className="flex gap-2">
+            <Link href={`/todos/${task.id}/edit`} className="btn">Edit</Link>
+            <button
+                onClick={handleDelete}
+                disabled={deleting}
+                className="btn"
+                style={{ backgroundColor: 'var(--danger)', color: '#fff' }}
+            >
+                {deleting ? 'Deleting…' : 'Delete'}
+            </button>
+            <button onClick={() => router.back()} className="btn">Back</button>
             </div>
-            </>
-        )}
-        </main>
+        </div>
+        </>
     );
     }

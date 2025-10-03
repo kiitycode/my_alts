@@ -1,10 +1,12 @@
-    export default function Footer(): JSX.Element {
+    // components/Footer.tsx
+    import React from 'react';
+
+    export default function Footer(): React.ReactElement {
     return (
-        <footer className="mt-auto py-6 border-t bg-white/50">
-        <div className="max-w-6xl mx-auto px-4 text-center text-sm text-slate-600">
-            © {new Date().getFullYear()} Oluwatosin — TodoNext
+        <footer className="mt-8">
+        <div className="max-w-[960px] w-full mx-auto text-center text-sm" style={{ color: 'var(--text-color)' }}>
+            © {new Date().getFullYear()} Todo App Next.js
         </div>
         </footer>
     );
     }
-

@@ -4,8 +4,8 @@
     import TodoList from '../../components/TodoList';
     import { useCachedTodos } from '../../hooks/useCachedTodos';
 
-    export default function TodosPage(): JSX.Element {
-    const { todos, loading, error } = useCachedTodos();
+    export default function TodosPage(): React.ReactElement {
+    const { todos, loading } = useCachedTodos();
 
     return (
         <section>
@@ -13,7 +13,6 @@
             <h1 className="text-2xl">Your Todos</h1>
             <Link href="/create" className="btn">+ New</Link>
         </div>
-
         {loading ? <div className="spinner" /> : <TodoList todos={todos} />}
         </section>
     );

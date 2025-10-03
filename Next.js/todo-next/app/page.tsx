@@ -1,25 +1,25 @@
-// app/page.tsx
 'use client';
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { fetchTasks } from '../services/api';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import type { Todo } from '../types/todo';
 
-export default function Home(): JSX.Element {
+export default function Home(): React.ReactElement {
   const { user, logout } = useAuth();
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const [tasks, setTasks] = useState<Todo[]>([]);
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState('');
-  const [status, setStatus] = useState<string>('all');
+  const [status, setStatus] = useState<'all' | Todo['status']>('all');
   const [error, setError] = useState<string | null>(null);
 
-  const userId = useMemo(() => (user ? (user.id as string | number) : null), [user]);
+  const userId = useMemo(() => {
+    const id = user?.id;
+    return typeof id === 'string' || typeof id === 'number' ? id : undefined;
+  }, [user]);
 
   const load = useCallback(async () => {
     if (!userId) return;
@@ -28,25 +28,22 @@ export default function Home(): JSX.Element {
     try {
       const data = await fetchTasks(userId);
       setTasks(data);
-    } catch (e: any) {
-      setError(e?.message || 'Failed to load tasks');
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Failed to load tasks');
     } finally {
       setLoading(false);
     }
   }, [userId]);
 
-  // redirect if not logged in
   useEffect(() => {
     if (!user) router.replace('/login');
   }, [user, router]);
 
-  // initial load and after create redirect (?r=1)
   useEffect(() => {
     if (!userId) return;
     void load();
-  }, [userId, searchParams, load]);
+  }, [userId, load]);
 
-  // reload when tab gains focus or visibility changes
   useEffect(() => {
     const onFocus = () => void load();
     const onVis = () => document.visibilityState === 'visible' && void load();
@@ -58,92 +55,65 @@ export default function Home(): JSX.Element {
     };
   }, [load]);
 
-  if (!user) return <div className="p-8">Redirecting...</div>;
+  if (!user) return <div className="p-8 text-center">Redirecting...</div>;
 
-  const filtered = tasks.filter(
-    (t) =>
-      (t.name ?? '').toLowerCase().includes(search.toLowerCase()) &&
-      (status === 'all' || t.status === status)
-  );
+  const filtered = tasks.filter(t => status === 'all' || t.status === status);
 
   return (
-    <main className="max-w-6xl mx-auto p-6">
+    <>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-3xl font-bold">📋 Task List</h1>
-          <p className="text-sm text-slate-600">
+          <p className="text-sm" style={{ opacity: 0.85 }}>
             Welcome, <span className="font-medium">{user.username}</span>
           </p>
         </div>
-        <div className="flex gap-3">
-          <Link
-            href="/create"
-            className="inline-flex items-center px-4 py-2 bg-sky-600 text-white rounded shadow hover:bg-sky-700"
-          >
-            + New Task
-          </Link>
+        <div className="flex gap-5">
+          <Link href="/create" className="btn">+ New Task</Link>
           <button
-            onClick={() => {
-              logout();
-              router.push('/login');
-            }}
-            className="px-3 py-2 border rounded"
+            onClick={() => { logout(); router.push('/login'); }}
+            className="btn"
           >
             Logout
           </button>
         </div>
       </div>
 
-      <div className="flex gap-3 mb-6">
+      <div className="flex-between mb-3">
         <select
           value={status}
-          onChange={(e) => setStatus(e.target.value)}
-          className="px-3 py-2 border rounded"
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setStatus(e.target.value as 'all' | Todo['status'])}
+          className="w-auto"
         >
           <option value="all">All Statuses</option>
           <option value="TODO">TODO</option>
           <option value="IN_PROGRESS">IN PROGRESS</option>
           <option value="DONE">DONE</option>
         </select>
-        <button onClick={() => void load()} className="px-3 py-2 border rounded">
-          Reload
-        </button>
+        <button onClick={() => void load()} className="btn">Reload</button>
       </div>
 
-      {error && (
-        <div className="mb-4 p-3 border border-red-300 text-red-700 rounded">
-          {error}
-        </div>
-      )}
+      {error && <div className="text-danger mb-3">{error}</div>}
 
       {loading ? (
-        <div className="text-center py-8">Loading...</div>
+        <div className="spinner" />
       ) : (
-        <ul className="grid gap-4">
-          {filtered.map((task) => (
-            <li
-              key={String(task.id)}
-              className="bg-white shadow-sm rounded p-4 flex items-start justify-between"
-            >
-              <div>
-                <h3 className="text-lg font-semibold">{task.name}</h3>
-                <p className="text-sm text-slate-600 mt-1">
-                  Status: <span className="font-medium">{task.status}</span> · Priority:{' '}
-                  <span>{task.priority}</span>
-                </p>
-              </div>
-              <div className="flex flex-col gap-2">
-                <Link
-                  href={`/todos/${task.id}`}
-                  className="inline-flex items-center px-3 py-1 border rounded text-sm hover:bg-slate-100"
-                >
-                  View
-                </Link>
+        <ul className="grid gap-3">
+          {filtered.map(task => (
+            <li key={String(task.id)} className="card">
+              <div className="flex-between">
+                <div>
+                  <div className="font-semibold">{task.name}</div>
+                  <div className="text-sm" style={{ opacity: 0.85 }}>
+                    {task.status} • {task.priority}
+                  </div>
+                </div>
+                <Link href={`/todos/${task.id}`} className="btn">View</Link>
               </div>
             </li>
           ))}
         </ul>
       )}
-    </main>
+    </>
   );
 }
